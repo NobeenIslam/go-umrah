@@ -1,0 +1,225 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+PWA Architecture Pattern: React, Dexie, TanStack Query & Router
+This document outlines a layered architecture for building robust, offline-first Progressive Web Apps. It uses React Router for navigation, Dexie.js for local database management, and TanStack Query to treat the local database like a remote server, providing a clean, scalable pattern for state management.
+
+1. Project Structure
+This structure separates concerns, using aliased paths (@/) for clean imports. It introduces a dedicated types directory to decouple database models from front-end type definitions.
+
+src/
+├── components/
+│   ├── ui/                # ShadCN UI components
+│   └── TodoList.tsx       # Feature component
+├── db/
+│   └── dexie.ts           # DB Layer: Dexie class instantiation & schema
+├── hooks/
+│   └── todos/             # Feature-specific hooks folder
+│       ├── useCreateTodo.ts
+│       ├── useDeleteTodo.ts
+│       ├── useGetTodos.ts
+│       └── useUpdateTodoStatus.ts
+├── layouts/
+│   └── MainLayout.tsx     # Layout with navigation (e.g., nav bar)
+├── pages/
+│   └── HomePage.tsx       # Page component for the '/' route
+├── services/
+│   └── todos.ts           # Service Layer: "Local API" for DB actions
+├── types/
+│   ├── db/
+│   │   └── models.ts      # DB model types (interfaces)
+│   └── todo.ts            # FE-specific types (e.g., for form state)
+└── App.tsx                # Main component, provides QueryClient & Router
+
+2. Database Layer (db/)
+This layer is responsible for setting up the database connection and schema. It references its models from the types/db directory.
+
+src/db/dexie.ts
+// src/db/dexie.ts
+import Dexie, { type Table } from 'dexie';
+import type { Todo } from '@/types/db/models'; // Aliased import
+
+export class AppDatabase extends Dexie {
+  todos!: Table<Todo>;
+
+  constructor() {
+    super('myPwaDatabase');
+    this.version(1).stores({
+      todos: '++id, task, completed',
+    });
+  }
+}
+
+export const db = new AppDatabase();
+
+3. Type Definitions (types/)
+This directory separates data-layer types from front-end types to promote loose coupling.
+
+src/types/db/models.ts
+This file contains interfaces that are a 1-to-1 representation of the database tables.
+
+// src/types/db/models.ts
+export interface Todo {
+  id?: number;
+  task: string;
+  completed: boolean;
+  createdAt: Date;
+}
+
+src/types/todo.ts
+This file contains types used exclusively by the front-end (e.g., for component props or form state), which may differ from the database model.
+
+// src/types/todo.ts
+
+// Example: A type for the form state when creating a new todo.
+// This is separate from the DB model and could evolve independently.
+export interface TodoFormData {
+  task: string;
+  // Could include other form-specific fields like 'priority' later.
+}
+
+4. Service Layer (services/)
+This layer acts as a "local API," containing functions that interact directly with the database using aliased imports.
+
+src/services/todos.ts
+// src/services/todos.ts
+import { db } from '@/db/dexie';
+import type { Todo } from '@/types/db/models';
+
+export const getTodos = async (): Promise<Todo[]> => {
+  return await db.todos.orderBy('createdAt').reverse().toArray();
+};
+
+export const createTodo = async (task: string): Promise<number> => {
+  const newTodo: Omit<Todo, 'id'> = {
+    task,
+    completed: false,
+    createdAt: new Date(),
+  };
+  return await db.todos.add(newTodo as Todo);
+};
+
+export const updateTodoStatus = async (id: number, completed: boolean): Promise<number> => {
+  return await db.todos.update(id, { completed });
+};
+
+export const deleteTodo = async (id: number): Promise<void> => {
+  return await db.todos.delete(id);
+};
+
+5. Hooks Layer (hooks/)
+This layer uses TanStack Query to connect the Service Layer to the UI. Each hook is in its own file for maximum organization.
+
+src/hooks/todos/useGetTodos.ts
+// src/hooks/todos/useGetTodos.ts
+import { useQuery } from '@tanstack/react-query';
+import { getTodos } from '@/services/todos';
+
+export const useGetTodos = () => {
+  return useQuery({
+    queryKey: ['todos'],
+    queryFn: getTodos,
+  });
+};
+
+src/hooks/todos/useCreateTodo.ts
+// src/hooks/todos/useCreateTodo.ts
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createTodo } from '@/services/todos';
+
+export const useCreateTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (task: string) => createTodo(task),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] });
+    },
+  });
+};
+
+(Other hook files like useUpdateTodoStatus.ts and useDeleteTodo.ts follow the same pattern of using aliased imports.)
+
+6. UI & Layout Layer (pages/, layouts/, components/)
+This layer handles presentation. The TodoList component now uses aliased imports to access hooks and UI components.
+
+src/components/TodoList.tsx
+// src/components/TodoList.tsx
+import React, { useState } from 'react';
+import { useGetTodos } from '@/hooks/todos/useGetTodos';
+import { useCreateTodo } from '@/hooks/todos/useCreateTodo';
+import { useUpdateTodoStatus } from '@/hooks/todos/useUpdateTodoStatus';
+import { useDeleteTodo } from '@/hooks/todos/useDeleteTodo';
+
+// Assuming you have these ShadCN components
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+
+export const TodoList = () => {
+  const [newTask, setNewTask] = useState('');
+  const { data: todos, isLoading, isError } = useGetTodos();
+  const createTodoMutation = useCreateTodo();
+  const updateTodoMutation = useUpdateTodoStatus();
+  const deleteTodoMutation = useDeleteTodo();
+
+  const handleCreateTodo = () => {
+    if (newTask.trim()) {
+      createTodoMutation.mutate(newTask, {
+        onSuccess: () => setNewTask(''),
+      });
+    }
+  };
+
+  if (isLoading) return <div>Loading your to-do list...</div>;
+  if (isError) return <div>An error occurred.</div>;
+
+  return (
+    <Card className="w-full max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle>My To-Do List</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex w-full items-center space-x-2 mb-4">
+          <Input
+            type="text"
+            placeholder="Add a new task..."
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleCreateTodo()}
+          />
+          <Button onClick={handleCreateTodo} disabled={createTodoMutation.isPending}>
+            {createTodoMutation.isPending ? 'Adding...' : 'Add'}
+          </Button>
+        </div>
+        <ul className="space-y-2">
+          {todos?.map((todo) => (
+            <li key={todo.id} className="flex items-center justify-between p-2 rounded-md border">
+              <div className="flex items-center space-x-3">
+                <Checkbox
+                  checked={todo.completed}
+                  onCheckedChange={(checked) =>
+                    updateTodoMutation.mutate({ id: todo.id!, completed: !!checked })
+                  }
+                />
+                <span className={todo.completed ? 'line-through text-gray-500' : ''}>
+                  {todo.task}
+                </span>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => deleteTodoMutation.mutate(todo.id!)}
+              >
+                Delete
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
+  );
+};
