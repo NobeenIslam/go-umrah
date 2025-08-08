@@ -11,7 +11,7 @@ const TABS = [
   { path: "/learn", label: "Learn", icon: BookOpenText },
 ] as const;
 
-export default function App() {
+export const RootLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -37,4 +37,4 @@ export default function App() {
       />
     </div>
   );
-}
+};
