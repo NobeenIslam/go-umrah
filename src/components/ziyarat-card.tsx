@@ -51,10 +51,18 @@ export function CheckCard({
       onClick={toggle}
       onKeyDown={onKeyDown}
       className={cn(
-        "group relative w-full cursor-pointer rounded-3xl border bg-card/90 text-card-foreground shadow-lg ring-1 ring-black/5 transition-all hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30",
+        // Surface and elevation tuned to theme tokens
+        "group relative w-full cursor-pointer rounded-3xl border bg-card/90 text-card-foreground shadow-lg ring-1 ring-border transition-all hover:shadow-2xl focus:outline-none focus-visible:ring-2",
+        // Use brand primary for focus ring
+        "focus-visible:ring-[color:var(--brand-primary)]/45",
+        // Spacing
         "p-6 md:p-8",
         className
       )}
+      style={{
+        // Subtle brand gradient edge glow
+        boxShadow: "0 1px 0 0 rgba(0,0,0,0.02), 0 8px 30px rgba(0,0,0,0.05)",
+      }}
     >
       {/* Title and toggle */}
       <div className="flex items-start gap-4">
@@ -79,16 +87,16 @@ export function CheckCard({
             toggle();
           }}
           className={cn(
-            "ml-auto flex h-8 w-8 items-center justify-center rounded-full transition-all",
-            "ring-1 ring-muted-foreground/50",
+            "ml-auto flex h-10 w-10 items-center justify-center rounded-full transition-all",
+            // Ring and backgrounds aligned to brand
             current
-              ? "bg-foreground text-background ring-foreground/70"
-              : "bg-transparent text-muted-foreground hover:bg-muted/60"
+              ? "bg-[color:var(--brand-primary)] text-white ring-1 ring-[color:var(--brand-primary)]/70"
+              : "bg-transparent text-[color:var(--brand-secondary)] ring-1 ring-[color:var(--brand-secondary)]/45 hover:bg-[color:var(--brand-soft-mint-a)]"
           )}
         >
           <Check
             className={cn(
-              "h-4 w-4 transition-transform duration-200",
+              "h-5 w-5 transition-transform duration-200",
               current ? "scale-100 opacity-100" : "scale-50 opacity-0"
             )}
           />
@@ -103,10 +111,16 @@ export function CheckCard({
         <MapPin
           className={cn(
             "h-5 w-5",
-            current ? "text-foreground" : "text-muted-foreground"
+            current
+              ? "text-[color:var(--brand-primary)]"
+              : "text-[color:var(--brand-secondary)]"
           )}
         />
-        <span className={cn(current ? "text-foreground font-medium" : "")}>
+        <span
+          className={cn(
+            current ? "text-foreground font-medium" : "text-muted-foreground"
+          )}
+        >
           {statusText}
         </span>
       </div>
