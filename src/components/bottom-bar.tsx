@@ -18,20 +18,14 @@ type BottomBarProps = {
 };
 
 export default function BottomBar({
-  items = [
-    { key: "home", label: "Home", icon: (() => null) as any },
-    { key: "favorites", label: "Favourites", icon: (() => null) as any },
-    { key: "articles", label: "Articles", icon: (() => null) as any },
-    { key: "emotions", label: "Emotions", icon: (() => null) as any },
-    { key: "reminder", label: "Reminder", icon: (() => null) as any },
-  ],
-  defaultActive = items[0]?.key ?? "home",
+  items = [],
   activeKey,
   onChange = () => {},
   className,
 }: BottomBarProps) {
-  const [internalActive, setInternalActive] =
-    React.useState<string>(defaultActive);
+  const [internalActive, setInternalActive] = React.useState<string>(
+    items[0]?.key ?? "home"
+  );
   const isControlled = activeKey !== undefined;
   const currentActive = isControlled ? activeKey! : internalActive;
 
