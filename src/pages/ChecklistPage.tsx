@@ -12,7 +12,7 @@ import { Progress } from "@/components/ui/progress";
 const isValid = (value: string) =>
   value.trim().length > 0 && value.trim().length <= 200;
 
-const ChecklistPage: FC = () => {
+export const ChecklistPage: FC = () => {
   const [text, setText] = useState("");
 
   const { data: items = [], isLoading } = useGetChecklist();
@@ -90,5 +90,3 @@ const ChecklistPage: FC = () => {
     </div>
   );
 };
-
-export default ChecklistPage;

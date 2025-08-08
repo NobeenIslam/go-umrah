@@ -11,4 +11,3 @@ export const MedinaPage: FC = () => {
   );
 };
 
-export default MedinaPage;

@@ -10,5 +10,3 @@ export const HomePage: FC = () => {
     </div>
   );
 };
-
-export default HomePage;

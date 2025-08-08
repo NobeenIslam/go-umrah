@@ -11,4 +11,3 @@ export const MakkahPage: FC = () => {
   );
 };
 
-export default MakkahPage;

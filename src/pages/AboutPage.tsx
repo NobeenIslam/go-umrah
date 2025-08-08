@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-const AboutPage: FC = () => {
+export const AboutPage: FC = () => {
   return (
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">About / Learn</h2>
@@ -11,4 +11,3 @@ const AboutPage: FC = () => {
   );
 };
 
-export default AboutPage;
