@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "@/layouts/RootLayout";
 import { Home } from "@/pages/Home";
 import { Checklist } from "@/pages/Checklist";
-import { Makkah } from "@/pages/Makkah";
+import { Makkah } from "@/pages/Makkah/Makkah";
 import { Medina } from "@/pages/Medina/Medina";
 import { About } from "@/pages/About";
 import { SecondaryLayout } from "@/layouts/SecondaryLayout";
