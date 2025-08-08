@@ -37,7 +37,7 @@ const variants: Record<
   },
 };
 
-export type DhikrCardProps = {
+export type IconCardProps = {
   title?: string;
   description?: string;
   icon?: LucideIcon;
@@ -47,19 +47,19 @@ export type DhikrCardProps = {
 };
 
 /**
- * DhikrCard
+ * IconCard
  * - Mobile-first elevated card with left icon, title and paragraph.
  * - Theme-aligned (bg-card, ring-border) with brand variant by default.
  * - Accessible with semantic headings and text.
  */
-export function DhikrCard({
+export function IconCard({
   title,
   description,
   icon: Icon = Sun,
   variant = "brand",
   ariaLabel,
   className,
-}: DhikrCardProps) {
+}: IconCardProps) {
   const resolved = variants[variant];
 
   return (
