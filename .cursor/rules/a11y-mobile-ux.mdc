@@ -1,0 +1,86 @@
+---
+description: When doing front end tasks, creating UI
+alwaysApply: false
+---
+# Accessibility and Mobile UX Guidelines
+
+Apply these rules to every UI change. Prefer shadcn primitives from `@/components/ui/*` since they ship with sensible a11y defaults.
+
+- Semantics and roles
+
+  - Use `<button>` for actions and `<a>`/`<Link>` for navigation. Avoid click-only `<div>`/`<span>`.
+  - If a non-semantic container must be interactive, add `role`, `tabIndex=0`, and keyboard handlers for Enter/Space.
+  - Expose state with ARIA: `aria-checked`, `aria-expanded`, `aria-current`, `aria-disabled`, `aria-controls` when applicable.
+
+- Keyboard support
+
+  - All interactive elements must be reachable via Tab with a visible focus style.
+  - Enter/Space should activate/toggle; Escape closes dialogs/menus; Arrow keys where patterns expect them (menus, radios, tabs).
+  - Do not remove focus outlines. If customizing, maintain clear visible focus rings.
+
+- Labels and names
+
+  - Icon-only buttons must have `aria-label`.
+  - Inputs must be labeled: use `<label htmlFor>` or `aria-label` (placeholder is not a label).
+
+- Hit targets and layout (mobile first)
+
+  - Minimum target size ~44×44px. Use classes like `size-10`, `h-10 w-10`, or `py-3 px-3` for tap areas.
+  - Ensure list items that toggle state support full-surface click and keyboard activation; inner controls must stop propagation if needed.
+  - Respect safe areas: use `env(safe-area-inset-top|bottom)` for top/bottom bars.
+
+- Color, contrast, and motion
+
+  - Use theme tokens from [src/index.css](mdc:src/index.css) (e.g., `var(--primary)` or brand vars); never hardcode hex in TSX.
+  - Maintain at least AA contrast (4.5:1 for body text); ensure disabled/secondary text remains readable.
+  - Respect `prefers-reduced-motion`: gate non-essential animations with `motion-safe:` and provide `motion-reduce:` fallbacks.
+
+- shadcn primitives
+
+  - Prefer primitives like [button.tsx](mdc:src/components/ui/button.tsx), [input.tsx](mdc:src/components/ui/input.tsx), [dialog.tsx](mdc:src/components/ui/dialog.tsx), [checkbox.tsx](mdc:src/components/ui/checkbox.tsx), [progress.tsx](mdc:src/components/ui/progress.tsx) to inherit a11y patterns.
+
+- Navigation
+
+  - Mark current route item with `aria-current="page"`.
+  - Ensure route changes move focus appropriately (e.g., focus main heading) for screen reader context.
+# Accessibility and Mobile UX Guidelines
+
+Apply these rules to every UI change. Prefer shadcn primitives from `@/components/ui/*` since they ship with sensible a11y defaults.
+
+- Semantics and roles
+
+  - Use `<button>` for actions and `<a>`/`<Link>` for navigation. Avoid click-only `<div>`/`<span>`.
+  - If a non-semantic container must be interactive, add `role`, `tabIndex=0`, and keyboard handlers for Enter/Space.
+  - Expose state with ARIA: `aria-checked`, `aria-expanded`, `aria-current`, `aria-disabled`, `aria-controls` when applicable.
+
+- Keyboard support
+
+  - All interactive elements must be reachable via Tab with a visible focus style.
+  - Enter/Space should activate/toggle; Escape closes dialogs/menus; Arrow keys where patterns expect them (menus, radios, tabs).
+  - Do not remove focus outlines. If customizing, maintain clear visible focus rings.
+
+- Labels and names
+
+  - Icon-only buttons must have `aria-label`.
+  - Inputs must be labeled: use `<label htmlFor>` or `aria-label` (placeholder is not a label).
+
+- Hit targets and layout (mobile first)
+
+  - Minimum target size ~44×44px. Use classes like `size-10`, `h-10 w-10`, or `py-3 px-3` for tap areas.
+  - Ensure list items that toggle state support full-surface click and keyboard activation; inner controls must stop propagation if needed.
+  - Respect safe areas: use `env(safe-area-inset-top|bottom)` for top/bottom bars.
+
+- Color, contrast, and motion
+
+  - Use theme tokens from [src/index.css](mdc:src/index.css) (e.g., `var(--primary)` or brand vars); never hardcode hex in TSX.
+  - Maintain at least AA contrast (4.5:1 for body text); ensure disabled/secondary text remains readable.
+  - Respect `prefers-reduced-motion`: gate non-essential animations with `motion-safe:` and provide `motion-reduce:` fallbacks.
+
+- shadcn primitives
+
+  - Prefer primitives like [button.tsx](mdc:src/components/ui/button.tsx), [input.tsx](mdc:src/components/ui/input.tsx), [dialog.tsx](mdc:src/components/ui/dialog.tsx), [checkbox.tsx](mdc:src/components/ui/checkbox.tsx), [progress.tsx](mdc:src/components/ui/progress.tsx) to inherit a11y patterns.
+
+- Navigation
+
+  - Mark current route item with `aria-current="page"`.
+  - Ensure route changes move focus appropriately (e.g., focus main heading) for screen reader context.
