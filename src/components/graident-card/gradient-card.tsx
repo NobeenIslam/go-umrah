@@ -5,10 +5,11 @@ export type GradientCardProps = {
   title?: string;
   subtitle?: string;
   icon?: React.ReactNode;
-  colors?: [string, string]; // from, to
+  colors?: Readonly<[string, string]>; // from, to
   className?: string;
   badge?: React.ReactNode;
   showIcon?: boolean; // controls rendering of icon container/placeholder
+  density?: "default" | "compact"; // controls min-height sizing
 };
 
 export function GradientCard({
@@ -19,11 +20,21 @@ export function GradientCard({
   className,
   badge,
   showIcon = true,
+  density = "default",
 }: GradientCardProps) {
+  const bottomRowClassName = cn(
+    "flex items-end gap-2",
+    badge ? "justify-between" : "justify-center",
+    showIcon ? "mt-5 sm:mt-6" : "mt-1"
+  );
+
+  const minHeightClassName = density === "compact" ? "min-h-32" : "min-h-48";
+
   return (
     <div
       className={cn(
-        "group relative aspect-[1.2/1] w-full overflow-hidden rounded-3xl p-4",
+        "group relative h-full w-full overflow-hidden rounded-3xl p-5 sm:p-6",
+        minHeightClassName,
         "ring-1 ring-border shadow-sm",
         className
       )}
@@ -42,7 +53,7 @@ export function GradientCard({
         }}
       />
 
-      <div className="relative flex h-full flex-col justify-between">
+      <div className="relative flex h-full flex-col">
         {showIcon ? (
           <div className="flex items-center justify-center">
             <div className="grid h-20 w-20 place-items-center rounded-full bg-card/85 shadow-sm ring-1 ring-border">
@@ -56,13 +67,20 @@ export function GradientCard({
           </div>
         ) : null}
 
-        <div className="flex items-end justify-between gap-2">
-          <div>
-            <h3 className="text-lg font-semibold text-[color:var(--brand-foreground)]">
+        <div className={bottomRowClassName}>
+          <div
+            className={cn(
+              "mx-auto max-w-[90%] text-center",
+              badge && "mx-0 text-left"
+            )}
+          >
+            <h3 className="text-lg font-semibold text-[color:var(--brand-foreground)] leading-snug break-words">
               {title}
             </h3>
             {subtitle ? (
-              <p className="text-sm text-muted-foreground">{subtitle}</p>
+              <p className="text-sm text-muted-foreground leading-snug break-words">
+                {subtitle}
+              </p>
             ) : null}
           </div>
           {badge ? <div className="shrink-0">{badge}</div> : null}
