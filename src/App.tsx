@@ -3,56 +3,37 @@ import TopBar from "@/components/top-bar";
 import BottomBar from "@/components/bottom-bar";
 import { BookOpenText, CheckSquare, Home, Map, Building2 } from "lucide-react";
 
-const routeKeyToPath: Record<string, string> = {
-  home: "/",
-  checklist: "/checklist",
-  makkah: "/makkah",
-  medina: "/medina",
-  about: "/about",
-};
-
-const pathToRouteKey: Record<string, string> = {
-  "/": "home",
-  "/checklist": "checklist",
-  "/makkah": "makkah",
-  "/medina": "medina",
-  "/about": "about",
-};
-
-const titles: Record<string, string> = {
-  home: "Home",
-  checklist: "Checklist",
-  makkah: "Makkah",
-  medina: "Medina",
-  about: "Learn",
-};
+const TABS = [
+  { path: "/", label: "Home", icon: Home },
+  { path: "/checklist", label: "Checklist", icon: CheckSquare },
+  { path: "/medina", label: "Medina", icon: Building2 },
+  { path: "/makkah", label: "Makkah", icon: Map },
+  { path: "/about", label: "Learn", icon: BookOpenText },
+] as const;
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const activeKey = pathToRouteKey[location.pathname] ?? "home";
-
-  const items = [
-    { key: "home", label: "Home", icon: Home },
-    { key: "checklist", label: "Checklist", icon: CheckSquare },
-    { key: "medina", label: "Medina", icon: Building2 },
-    { key: "makkah", label: "Makkah", icon: Map },
-    { key: "about", label: "Learn", icon: BookOpenText },
-  ];
+  const activePath = location.pathname;
+  const activeTab = TABS.find((t) => t.path === activePath) ?? TABS[0];
 
   return (
     <div className="mx-auto min-h-dvh w-full max-w-md bg-background">
-      <TopBar title={titles[activeKey]} />
+      <TopBar title={activeTab.label} />
 
       <main className="mx-auto max-w-md px-4 pt-24 pb-28">
         <Outlet />
       </main>
 
       <BottomBar
-        items={items}
-        activeKey={activeKey}
-        onChange={(key) => navigate(routeKeyToPath[key] ?? "/")}
+        items={TABS.map(({ path, label, icon }) => ({
+          key: path,
+          label,
+          icon,
+        }))}
+        activeKey={activePath}
+        onChange={(path) => navigate(path)}
       />
     </div>
   );
