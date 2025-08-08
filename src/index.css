@@ -133,3 +133,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .safe-top-padding {
+    padding-top: max(1rem, calc(env(safe-area-inset-top) + 0.5rem));
+  }
+  .topbar-gradient-primary {
+    background: linear-gradient(
+      180deg,
+      var(--brand-primary) 0%,
+      var(--brand-primary-dark) 100%
+    );
+  }
+  .topbar-gradient-secondary {
+    background: linear-gradient(
+      180deg,
+      var(--brand-secondary) 0%,
+      var(--brand-secondary-dark) 100%
+    );
+  }
+}

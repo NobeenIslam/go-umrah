@@ -24,10 +24,10 @@ export function TopBar({
   className,
   variant = "primary",
 }: TopBarProps) {
-  const backgroundStyle =
+  const variantClass =
     variant === "secondary"
-      ? "linear-gradient(180deg, var(--brand-secondary) 0%, var(--brand-secondary-dark) 100%)"
-      : "linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)";
+      ? "topbar-gradient-secondary"
+      : "topbar-gradient-primary";
 
   return (
     <header
@@ -37,12 +37,10 @@ export function TopBar({
       <div
         className={cn(
           "mx-auto max-w-md rounded-b-3xl text-white shadow-md",
-          "px-4 pb-3 pt-4"
+          "px-4 pb-3 pt-4",
+          "safe-top-padding",
+          variantClass
         )}
-        style={{
-          paddingTop: "max(1rem, calc(env(safe-area-inset-top) + 0.5rem))",
-          background: backgroundStyle,
-        }}
       >
         <div className="flex items-center justify-between">
           <Button
