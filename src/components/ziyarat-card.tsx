@@ -67,11 +67,11 @@ export function CheckCard({
       {/* Title and toggle */}
       <div className="flex items-start gap-4">
         <div className="min-w-0">
-          <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
+          <h3 className="text-lg md:text-xl font-semibold tracking-tight">
             {title}
           </h3>
           {description ? (
-            <p className="mt-3 text-base md:text-lg text-muted-foreground">
+            <p className="mt-3 text-sm md:text-base text-muted-foreground">
               {description}
             </p>
           ) : null}
@@ -107,7 +107,7 @@ export function CheckCard({
       </div>
 
       {/* Bottom status row */}
-      <div className="mt-6 flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+      <div className="mt-6 flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
         <MapPin
           className={cn(
             "h-5 w-5",
