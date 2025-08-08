@@ -2,7 +2,7 @@ import { db } from "@/db/dexie";
 import type { ChecklistItem } from "@/types/db/models";
 
 export const getChecklist = async (): Promise<ChecklistItem[]> => {
-  return await db.checklist.orderBy("createdAt").reverse().toArray();
+  return await db.checklist.orderBy("createdAt").toArray();
 };
 
 export const addChecklistItem = async (text: string): Promise<number> => {
