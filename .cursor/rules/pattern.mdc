@@ -1,9 +1,6 @@
 ---
-description:
-globs:
 alwaysApply: true
 ---
-
 PWA Architecture Pattern: React, Dexie, TanStack Query & Router
 This document outlines a layered architecture for building robust, offline-first Progressive Web Apps. It uses React Router for navigation, Dexie.js for local database management, and TanStack Query to treat the local database like a remote server, providing a clean, scalable pattern for state management.
 
