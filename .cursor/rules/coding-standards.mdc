@@ -1,0 +1,34 @@
+---
+alwaysApply: true
+---
+
+# Coding Standards: Clarity over Brevity
+
+- Naming
+
+  - Never use single-letter or 1–2 character identifiers for variables, parameters, functions, types, or components. Minimum length 3+ characters.
+  - Prefer meaningful, descriptive names over abbreviations (e.g., `countOfCheckedItems` instead of `cnt`, `userResponseMs` instead of `resMs`).
+  - Functions/actions use verb or verb-phrase names (e.g., `toggleCheckedState`, `fetchChecklistItems`).
+  - Variables use noun or noun-phrase names (e.g., `completedItemCount`, `activeRoutePath`).
+  - React components are PascalCase nouns (e.g., `QuoteCard`, `ChecklistItem`).
+
+- Readability
+
+  - Avoid cleverness; prioritize explicitness even if longer. Prefer intermediate variables to explain intent.
+  - Handle edge cases early with guard clauses; avoid deep nesting.
+  - Keep lines reasonably short and break long expressions across lines.
+
+- Consistency
+
+  - Use `@/*` imports for internal modules and `import type { ... }` when importing types (verbatimModuleSyntax).
+  - Expose `className` props and merge with `cn` for style overrides.
+
+- Examples (Bad → Good)
+  - `const n = items.length` → `const totalItemCount = items.length`
+  - `fn(x){...}` → `function updateChecklistItemStatus(itemId: number) { ... }`
+  - `const [v,setV]=useState(false)` → `const [isChecked, setIsChecked] = useState(false)`
+    description:
+    globs:
+    alwaysApply: false
+
+---
