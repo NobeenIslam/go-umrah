@@ -1,0 +1,73 @@
+---
+alwaysApply: true
+---
+
+# Reusable Component API Guidelines
+
+- Props over hardcoded strings
+
+  - Do not bake copy into components. All user-facing text (titles, headings, labels, placeholders, helper text, CTA text) must be supplied via props or `children`.
+  - Avoid default string values. Only provide a default when it’s truly generic (e.g., empty state like "—") or when required for accessibility (`aria-label`) and caller hasn’t provided one.
+  - For demo usage, defaults can be used in examples/stories, not in production components.
+
+- Theme alignment
+
+  - Use theme tokens from [src/index.css](mdc:src/index.css) (e.g., `var(--brand-primary)`, `bg-card`, `text-card-foreground`, `ring-border`). Never hardcode hex in TSX.
+  - Expose `className` and merge via `cn` to allow caller overrides.
+
+- Variants and composition
+
+  - Use a `variant` prop for visual intent (e.g., `success | info | neutral`) and prefer `class-variance-authority` if styles grow complex.
+  - Accept `icon` via prop or allow `showIcon` boolean to toggle built-in iconography.
+  - Prefer `children` for free-form content blocks within cards or containers.
+
+- Accessibility & mobile UX
+
+  - Ensure interactive wrappers expose roles/ARIA and keyboard handlers when needed; see [a11y-mobile-ux](mdc:.cursor/rules/a11y-mobile-ux.mdc).
+  - Maintain adequate tap targets (≥44px) for mobile; ensure focus visibility.
+
+- API consistency
+
+  - Follow `import type` for types and `@/*` alias imports.
+  - Export components (named export preferred project-wide unless otherwise noted by existing conventions).
+  - Keep layout constraints minimal inside components; let pages/layouts control outer spacing. Provide `className` for spacing when needed instead of hardcoding large margins.
+
+- Examples
+  - Good: `<QuoteCard heading="" quotes={[]} variant="success" showIcon />`
+  - Good: `<ChecklistItem text={...} onDelete={...} onCheckedChange={...} />`
+  - Avoid: `<Component />` that renders fixed English copy without props.
+
+# Reusable Component API Guidelines
+
+- Props over hardcoded strings
+
+  - Do not bake copy into components. All user-facing text (titles, headings, labels, placeholders, helper text, CTA text) must be supplied via props or `children`.
+  - Avoid default string values. Only provide a default when it’s truly generic (e.g., empty state like "—") or when required for accessibility (`aria-label`) and caller hasn’t provided one.
+  - For demo usage, defaults can be used in examples/stories, not in production components.
+
+- Theme alignment
+
+  - Use theme tokens from [src/index.css](mdc:src/index.css) (e.g., `var(--brand-primary)`, `bg-card`, `text-card-foreground`, `ring-border`). Never hardcode hex in TSX.
+  - Expose `className` and merge via `cn` to allow caller overrides.
+
+- Variants and composition
+
+  - Use a `variant` prop for visual intent (e.g., `success | info | neutral`) and prefer `class-variance-authority` if styles grow complex.
+  - Accept `icon` via prop or allow `showIcon` boolean to toggle built-in iconography.
+  - Prefer `children` for free-form content blocks within cards or containers.
+
+- Accessibility & mobile UX
+
+  - Ensure interactive wrappers expose roles/ARIA and keyboard handlers when needed; see [a11y-mobile-ux](mdc:.cursor/rules/a11y-mobile-ux.mdc).
+  - Maintain adequate tap targets (≥44px) for mobile; ensure focus visibility.
+
+- API consistency
+
+  - Follow `import type` for types and `@/*` alias imports.
+  - Export components (named export preferred project-wide unless otherwise noted by existing conventions).
+  - Keep layout constraints minimal inside components; let pages/layouts control outer spacing. Provide `className` for spacing when needed instead of hardcoding large margins.
+
+- Examples
+  - Good: `<QuoteCard heading="" quotes={[]} variant="success" showIcon />`
+  - Good: `<ChecklistItem text={...} onDelete={...} onCheckedChange={...} />`
+  - Avoid: `<Component />` that renders fixed English copy without props.
