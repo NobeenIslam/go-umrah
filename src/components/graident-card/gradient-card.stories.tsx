@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import GradientCard from "@/components/gradient-card";
-import React from "react";
+import { GradientCard } from "@/components/graident-card/gradient-card";
 
 const meta: Meta<typeof GradientCard> = {
   title: "Components/GradientCard",

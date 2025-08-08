@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import BottomBar from "@/components/bottom-bar";
+import { BottomBar } from "@/components/bottom-bar/bottom-bar";
 import { Home, ListChecks, MapPinned, Heart, Settings } from "lucide-react";
 import React from "react";
 

@@ -10,7 +10,7 @@ type GradientCardProps = {
   badge?: React.ReactNode;
 };
 
-export default function GradientCard({
+export function GradientCard({
   title = "Card Title",
   subtitle,
   icon,

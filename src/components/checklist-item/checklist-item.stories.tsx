@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ChecklistItem } from "@/components/checklist-item";
+import { ChecklistItem } from "@/components/checklist-item/checklist-item";
 import React from "react";
 
 const meta: Meta<typeof ChecklistItem> = {

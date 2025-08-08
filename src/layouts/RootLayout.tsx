@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import TopBar from "@/components/top-bar";
-import BottomBar from "@/components/bottom-bar";
+import { TopBar } from "@/components/top-bar";
+import { BottomBar } from "@/components/bottom-bar";
 import { BookOpenText, CheckSquare, Home, Building2, Box } from "lucide-react";
 
 const TABS = [

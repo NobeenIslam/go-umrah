@@ -17,7 +17,7 @@ type BottomBarProps = {
   className?: string;
 };
 
-export default function BottomBar({
+export function BottomBar({
   items = [],
   activeKey,
   onChange = () => {},

@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import TopBar from "@/components/top-bar";
+import { TopBar } from "@/components/top-bar";
 import { ArrowLeft } from "lucide-react";
 
 export const SecondaryLayout = () => {

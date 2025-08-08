@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ZiyarahCard } from "@/components/ziyarah-card";
+import { ZiyarahCard } from "@/components/ziyarah-card/ziyarah-card";
 import React from "react";
 
 const meta: Meta<typeof ZiyarahCard> = {

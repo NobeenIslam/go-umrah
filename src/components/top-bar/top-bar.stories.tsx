@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TopBar from "@/components/top-bar";
+import { TopBar } from "@/components/top-bar/top-bar";
 
 const meta: Meta<typeof TopBar> = {
   title: "Components/TopBar",

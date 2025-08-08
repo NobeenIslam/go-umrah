@@ -14,7 +14,7 @@ type TopBarProps = {
   className?: string;
 };
 
-export default function TopBar({
+export function TopBar({
   title = "Title",
   onLeftClick = () => {},
   onRightClick = () => {},

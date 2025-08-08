@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { IconCard } from "@/components/icon-card";
+import { IconCard } from "@/components/icon-card/icon-card";
 import { Sun, MapPin } from "lucide-react";
 
 const meta: Meta<typeof IconCard> = {
