@@ -5,67 +5,52 @@ import { Button } from "@/components/ui/button";
 import { Check, Copy, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Accent = "emerald" | "teal" | "cyan" | "violet" | "rose";
+export type QuoteCardVariant = "success" | "info" | "neutral";
 
 export type QuoteCardProps = {
   step?: number | string;
   heading?: string;
   quotes?: string[];
-  accent?: Accent;
+  variant?: QuoteCardVariant;
+  showIcon?: boolean;
   className?: string;
   onCopy?: (text: string) => void;
 };
 
-const accentClasses: Record<
-  Accent,
+const variantClasses: Record<
+  QuoteCardVariant,
   {
     number: string;
     bar: string;
     boxBg: string;
     quoteText: string;
     ring: string;
-    button: string;
+    icon: string;
   }
 > = {
-  emerald: {
-    number: "text-emerald-600",
-    bar: "bg-emerald-600/90",
-    boxBg: "bg-emerald-50",
-    quoteText: "text-emerald-700",
-    ring: "ring-emerald-600/10",
-    button: "bg-emerald-600 hover:bg-emerald-700 text-white",
+  success: {
+    number: "text-[color:var(--brand-primary)]",
+    bar: "bg-[color:var(--brand-primary)]/90",
+    boxBg: "bg-[color:var(--brand-soft-mint-a)]",
+    quoteText: "text-foreground",
+    ring: "ring-[color:var(--brand-primary)]/12",
+    icon: "text-[color:var(--brand-primary)]",
   },
-  teal: {
-    number: "text-teal-600",
-    bar: "bg-teal-600/90",
-    boxBg: "bg-teal-50",
-    quoteText: "text-teal-700",
-    ring: "ring-teal-600/10",
-    button: "bg-teal-600 hover:bg-teal-700 text-white",
+  info: {
+    number: "text-[color:var(--brand-accent)]",
+    bar: "bg-[color:var(--brand-accent)]/90",
+    boxBg: "bg-accent/10",
+    quoteText: "text-foreground",
+    ring: "ring-[color:var(--brand-accent)]/15",
+    icon: "text-[color:var(--brand-accent)]",
   },
-  cyan: {
-    number: "text-cyan-600",
-    bar: "bg-cyan-600/90",
-    boxBg: "bg-cyan-50",
-    quoteText: "text-cyan-700",
-    ring: "ring-cyan-600/10",
-    button: "bg-cyan-600 hover:bg-cyan-700 text-white",
-  },
-  violet: {
-    number: "text-violet-600",
-    bar: "bg-violet-600/90",
-    boxBg: "bg-violet-50",
-    quoteText: "text-violet-700",
-    ring: "ring-violet-600/10",
-    button: "bg-violet-600 hover:bg-violet-700 text-white",
-  },
-  rose: {
-    number: "text-rose-600",
-    bar: "bg-rose-600/90",
-    boxBg: "bg-rose-50",
-    quoteText: "text-rose-700",
-    ring: "ring-rose-600/10",
-    button: "bg-rose-600 hover:bg-rose-700 text-white",
+  neutral: {
+    number: "text-muted-foreground",
+    bar: "bg-muted-foreground/70",
+    boxBg: "bg-muted/40",
+    quoteText: "text-foreground",
+    ring: "ring-border",
+    icon: "text-muted-foreground",
   },
 };
 
@@ -81,11 +66,12 @@ export function QuoteCard({
     "Bismillah, was-salatu was-salamu ala rasulillah",
     "aAAoothu billahil-AAatheem wabiwajhihil-kareem wasultanihil-qadeem minash-shaytanir-rajeem",
   ],
-  accent = "emerald",
+  variant = "success",
+  showIcon = true,
   className,
   onCopy,
 }: QuoteCardProps) {
-  const c = accentClasses[accent];
+  const c = variantClasses[variant];
   const [copied, setCopied] = useState(false);
 
   const copyText = useMemo(() => quotes.join("\n\n"), [quotes]);
@@ -104,7 +90,7 @@ export function QuoteCard({
   return (
     <section
       className={cn(
-        "rounded-3xl bg-white p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
+        "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
         c.ring,
         "transition-all",
         className
@@ -135,7 +121,9 @@ export function QuoteCard({
             />
             <blockquote className="pl-5">
               <div className="flex items-center gap-2 pb-2 text-muted-foreground">
-                <Quote className="h-4 w-4" aria-hidden="true" />
+                {showIcon ? (
+                  <Quote className={cn("h-4 w-4", c.icon)} aria-hidden="true" />
+                ) : null}
                 <span className="text-xs font-medium">Recitation</span>
               </div>
               <div
@@ -161,7 +149,7 @@ export function QuoteCard({
             className="h-9 w-9 rounded-full"
           >
             {copied ? (
-              <Check className="h-4 w-4 text-emerald-600" />
+              <Check className="h-4 w-4 text-[color:var(--brand-primary)]" />
             ) : (
               <Copy className="h-4 w-4" />
             )}
