@@ -1,0 +1,37 @@
+---
+alwaysApply: true
+---
+# Dexie schema policy (early development)
+
+Preferred flow: keep schema super simple, no migrations. Manually delete the DB when you change fields.
+
+- Keep only a single version in [`src/db/dexie.ts`](mdc:src/db/dexie.ts):
+  - Use `.version(1).stores({ ... })` and update this as needed.
+  - Do not add `.version(2)` or `upgrade(...)` during this phase.
+- When you change/add/remove fields, manually reset the DB before running the app:
+  - In DevTools Console: `indexedDB.deleteDatabase("goUmrahPwaDb")` then refresh.
+  - Or temporarily call `await db.delete()` from a dev-only snippet.
+- You can keep the DB name stable (no need to rename) since you’re deleting it manually.
+
+Later (when stabilizing)
+
+- Introduce proper versioned migrations or bump the DB name for a hard reset when shipping to users.
+
+---
+# Dexie schema policy (early development)
+
+Preferred flow: keep schema super simple, no migrations. Manually delete the DB when you change fields.
+
+- Keep only a single version in [`src/db/dexie.ts`](mdc:src/db/dexie.ts):
+  - Use `.version(1).stores({ ... })` and update this as needed.
+  - Do not add `.version(2)` or `upgrade(...)` during this phase.
+- When you change/add/remove fields, manually reset the DB before running the app:
+  - In DevTools Console: `indexedDB.deleteDatabase("goUmrahPwaDb")` then refresh.
+  - Or temporarily call `await db.delete()` from a dev-only snippet.
+- You can keep the DB name stable (no need to rename) since you’re deleting it manually.
+
+Later (when stabilizing)
+
+- Introduce proper versioned migrations or bump the DB name for a hard reset when shipping to users.
+
+---
