@@ -24,7 +24,7 @@ const titles: Record<string, string> = {
   checklist: "Checklist",
   makkah: "Makkah",
   medina: "Medina",
-  about: "About / Learn",
+  about: "Learn",
 };
 
 export default function App() {
@@ -36,9 +36,9 @@ export default function App() {
   const items = [
     { key: "home", label: "Home", icon: Home },
     { key: "checklist", label: "Checklist", icon: CheckSquare },
-    { key: "makkah", label: "Makkah", icon: Map },
     { key: "medina", label: "Medina", icon: Building2 },
-    { key: "about", label: "About/Learn", icon: BookOpenText },
+    { key: "makkah", label: "Makkah", icon: Map },
+    { key: "about", label: "Learn", icon: BookOpenText },
   ];
 
   return (
