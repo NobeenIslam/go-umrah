@@ -11,6 +11,7 @@ alwaysApply: true
   - Functions/actions use verb or verb-phrase names (e.g., `toggleCheckedState`, `fetchChecklistItems`).
   - Variables use noun or noun-phrase names (e.g., `completedItemCount`, `activeRoutePath`).
   - React components are PascalCase nouns (e.g., `QuoteCard`, `ChecklistItem`).
+  - Don't need to add "Page" components it'll be known by the folder structure
 
 - Readability
 
