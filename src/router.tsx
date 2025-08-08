@@ -4,7 +4,7 @@ import { Home } from "@/pages/Home";
 import { Checklist } from "@/pages/Checklist";
 import { Makkah } from "@/pages/Makkah/Makkah";
 import { Medina } from "@/pages/Medina/Medina";
-import { About } from "@/pages/About";
+import { Learn } from "@/pages/Learn";
 import { SecondaryLayout } from "@/layouts/SecondaryLayout";
 import { MasjidAnNabawi } from "@/pages/Medina/SubPages/MasjidAnNabawi";
 import { GivingSalawaat } from "@/pages/Medina/SubPages/GivingSalawaat";
@@ -16,6 +16,11 @@ import { Ihram } from "@/pages/Makkah/SubPages/Ihram";
 import { TravelMeeqat } from "@/pages/Makkah/SubPages/TravelMeeqat";
 import { Umrah } from "@/pages/Makkah/SubPages/Umrah";
 import { MakkahZiyarah } from "@/pages/Makkah/SubPages/MakkahZiyarah";
+import { Quran } from "@/pages/Learn/SubPages/Quran";
+import { Sunnah } from "@/pages/Learn/SubPages/Sunnah";
+import { Fiqh } from "@/pages/Learn/SubPages/Fiqh";
+import { Faqs } from "@/pages/Learn/SubPages/Faqs";
+import { UsefulInSaudiArabia } from "@/pages/Learn/SubPages/UsefulInSaudiArabia";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +31,7 @@ export const router = createBrowserRouter([
       { path: "checklist", element: <Checklist /> },
       { path: "makkah", element: <Makkah /> },
       { path: "medina", element: <Medina /> },
-      { path: "learn", element: <About /> },
+      { path: "learn", element: <Learn /> },
     ],
   },
   {
@@ -49,6 +54,17 @@ export const router = createBrowserRouter([
       { path: "travel-meeqat", element: <TravelMeeqat /> },
       { path: "umrah", element: <Umrah /> },
       { path: "makkah-ziyarah", element: <MakkahZiyarah /> },
+    ],
+  },
+  {
+    path: "/learn",
+    element: <SecondaryLayout />,
+    children: [
+      { path: "quran", element: <Quran /> },
+      { path: "sunnah", element: <Sunnah /> },
+      { path: "fiqh", element: <Fiqh /> },
+      { path: "faqs", element: <Faqs /> },
+      { path: "useful-in-saudi-arabia", element: <UsefulInSaudiArabia /> },
     ],
   },
 ]);
