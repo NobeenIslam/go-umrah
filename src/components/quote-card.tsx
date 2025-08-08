@@ -10,6 +10,7 @@ export type QuoteCardVariant = "success" | "info" | "neutral";
 export type QuoteCardProps = {
   step?: number | string;
   heading?: string;
+  quoteHeading?: string;
   quotes?: string[];
   variant?: QuoteCardVariant;
   showIcon?: boolean;
@@ -61,27 +62,25 @@ const variantClasses: Record<
  */
 export function QuoteCard({
   step = 1,
-  heading = "Upon entering the Prophet's Masjid, recite:",
-  quotes = [
-    "Bismillah, was-salatu was-salamu ala rasulillah",
-    "aAAoothu billahil-AAatheem wabiwajhihil-kareem wasultanihil-qadeem minash-shaytanir-rajeem",
-  ],
+  heading,
+  quoteHeading,
+  quotes,
   variant = "success",
   showIcon = true,
   className,
   onCopy,
 }: QuoteCardProps) {
-  const c = variantClasses[variant];
-  const [copied, setCopied] = useState(false);
+  const variantStyles = variantClasses[variant];
+  const [isCopied, setIsCopied] = useState(false);
 
-  const copyText = useMemo(() => quotes.join("\n\n"), [quotes]);
+  const textToCopy = useMemo(() => quotes?.join("\n\n"), [quotes]);
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(copyText);
-      setCopied(true);
-      onCopy?.(copyText);
-      setTimeout(() => setCopied(false), 1200);
+      await navigator.clipboard.writeText(textToCopy ?? "");
+      setIsCopied(true);
+      onCopy?.(textToCopy ?? "");
+      setTimeout(() => setIsCopied(false), 1200);
     } catch {
       // ignore
     }
@@ -91,7 +90,7 @@ export function QuoteCard({
     <section
       className={cn(
         "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
-        c.ring,
+        variantStyles.ring,
         "transition-all",
         className
       )}
@@ -99,7 +98,7 @@ export function QuoteCard({
     >
       <div className="flex items-start gap-3">
         <div
-          className={cn("text-xl font-semibold", c.number)}
+          className={cn("text-xl font-semibold", variantStyles.number)}
           aria-label="Step number"
         >
           {String(step)}
@@ -112,26 +111,37 @@ export function QuoteCard({
           </h2>
 
           {/* Quote box */}
-          <div className={cn("relative mt-4 rounded-2xl p-4 sm:p-5", c.boxBg)}>
+          <div
+            className={cn(
+              "relative mt-4 rounded-2xl p-4 sm:p-5",
+              variantStyles.boxBg
+            )}
+          >
             <div
               className={cn(
                 "absolute left-2 top-2 bottom-2 w-1.5 rounded-full",
-                c.bar
+                variantStyles.bar
               )}
             />
             <blockquote className="pl-5">
               <div className="flex items-center gap-2 pb-2 text-muted-foreground">
                 {showIcon ? (
-                  <Quote className={cn("h-4 w-4", c.icon)} aria-hidden="true" />
+                  <Quote
+                    className={cn("h-4 w-4", variantStyles.icon)}
+                    aria-hidden="true"
+                  />
                 ) : null}
-                <span className="text-xs font-medium">Recitation</span>
+                <span className="text-xs font-medium">{quoteHeading}</span>
               </div>
               <div
-                className={cn("space-y-3 italic leading-relaxed", c.quoteText)}
+                className={cn(
+                  "space-y-3 italic leading-relaxed",
+                  variantStyles.quoteText
+                )}
               >
-                {quotes.map((q, i) => (
-                  <p key={i} className="text-base sm:text-lg">
-                    {`“${q}”`}
+                {quotes?.map((quoteText, quoteIndex) => (
+                  <p key={quoteIndex} className="text-base sm:text-lg">
+                    {`“${quoteText}”`}
                   </p>
                 ))}
               </div>
@@ -144,11 +154,11 @@ export function QuoteCard({
           <Button
             size="icon"
             variant="ghost"
-            aria-label={copied ? "Copied" : "Copy quote"}
+            aria-label={isCopied ? "Copied" : "Copy quote"}
             onClick={handleCopy}
             className="h-9 w-9 rounded-full"
           >
-            {copied ? (
+            {isCopied ? (
               <Check className="h-4 w-4 text-[color:var(--brand-primary)]" />
             ) : (
               <Copy className="h-4 w-4" />
