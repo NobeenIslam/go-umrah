@@ -2,6 +2,7 @@
 description: When creating UI components
 alwaysApply: false
 ---
+
 # Theming and shadcn UI usage
 
 Use the app's central theme variables. Do not hardcode colors in components.
@@ -10,7 +11,6 @@ Use the app's central theme variables. Do not hardcode colors in components.
   - Examples: `var(--brand-primary)`, `var(--brand-primary-dark)`, `var(--brand-secondary)`, `var(--brand-accent)`, `var(--brand-foreground)`, `var(--brand-soft-mint-a)`, `var(--brand-soft-mint-ring)`
   - Where appropriate, prefer shadcn tokens (already mapped to brand vars): `var(--primary)`, `var(--accent)`, `var(--destructive)`
 - Avoid hardcoded hex values in TSX. Use Tailwind + CSS variables (e.g., `text-[color:var(--brand-primary)]`).
-- Prefer shadcn primitives from `@/components/ui/*` when they improve consistency (e.g., [button.tsx](mdc:src/components/ui/button.tsx), [input.tsx](mdc:src/components/ui/input.tsx), [dialog.tsx](mdc:src/components/ui/dialog.tsx)). Custom layout components (`TopBar`, `BottomBar`, `GradientCard`) should consume theme variables.
-- Keep `src/main.tsx` for providers/bootstrap. Keep the layout shell in [src/App.tsx](mdc:src/App.tsx).
+- Prefer shadcn primitives from `@/components/ui/*` when they improve consistency (e.g., [button.tsx](mdc:src/components/ui/button.tsx), [input.tsx](mdc:src/components/ui/input.tsx), [dialog.tsx](mdc:src/components/ui/dialog.tsx)).
 
 ---

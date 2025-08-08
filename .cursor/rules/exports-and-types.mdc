@@ -2,10 +2,8 @@
 alwaysApply: true
 ---
 
-- Always export React components from their files. Prefer default export for pages and leaf components; named exports are fine for grouped utilities.
-  - Pages in `src/pages/*` should `export default` the page component.
-  - Reusable UI and layout components (e.g., `TopBar`, `BottomBar`, `GradientCard`) should be exported (default or named) and imported via `@/*` alias.
+- Always export React components from their files. Always do named exports, never defaults
 - With `verbatimModuleSyntax` enabled, import types using `import type {...} from "module"`.
   - Examples: `import type { FC } from "react"`, `import { cva, type VariantProps } from "class-variance-authority"`, `import { Toaster as Sonner, type ToasterProps } from "sonner"`.
 - Keep `@/*` alias usage consistent for all internal imports.
-  :
+- Prefer export const Component = () => {} syntax for all UI components
