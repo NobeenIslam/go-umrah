@@ -7,7 +7,12 @@ export const SecondaryLayout = () => {
 
   return (
     <div className="mx-auto min-h-dvh w-full max-w-md bg-background">
-      <TopBar title="" leftIcon={ArrowLeft} onLeftClick={() => navigate(-1)} />
+      <TopBar
+        title=""
+        leftIcon={ArrowLeft}
+        onLeftClick={() => navigate(-1)}
+        variant="secondary"
+      />
 
       <main className="mx-auto max-w-md px-4 pt-24 pb-6">
         <Outlet />

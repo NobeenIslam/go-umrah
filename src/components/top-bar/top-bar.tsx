@@ -12,6 +12,7 @@ type TopBarProps = {
   leftIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   rightIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   className?: string;
+  variant?: "primary" | "secondary";
 };
 
 export function TopBar({
@@ -21,7 +22,13 @@ export function TopBar({
   leftIcon: LeftIcon = Menu,
   rightIcon: RightIcon = Settings,
   className,
+  variant = "primary",
 }: TopBarProps) {
+  const backgroundStyle =
+    variant === "secondary"
+      ? "linear-gradient(180deg, var(--brand-secondary) 0%, var(--brand-secondary-dark) 100%)"
+      : "linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)";
+
   return (
     <header
       className={cn("fixed inset-x-0 top-0 z-40", className)}
@@ -34,8 +41,7 @@ export function TopBar({
         )}
         style={{
           paddingTop: "max(1rem, calc(env(safe-area-inset-top) + 0.5rem))",
-          background:
-            "linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)",
+          background: backgroundStyle,
         }}
       >
         <div className="flex items-center justify-between">
