@@ -1,0 +1,67 @@
+---
+alwaysApply: true
+---
+
+# Component folder pattern (tsx + stories + index)
+
+Use this pattern for all components under `src/components/**`. Exclude the shadcn components in /ui
+
+- Structure: one folder per component, kebab-case. Inside: `component.tsx`, `component.stories.tsx`, `index.tsx`.
+- Exports: index must re-export named component symbols. Avoid default exports.
+- Stories: colocate one `*.stories.tsx` per component folder with `Meta`, `StoryObj`, `args`, and `argTypes` when relevant.
+
+## Canonical example: `icon-card`
+
+```
+src/components/icon-card/
+├── icon-card.tsx        # component (named export)
+├── icon-card.stories.tsx # storybook stories
+└── index.tsx             # barrel re-export
+```
+
+index.tsx
+
+```ts
+export { IconCard } from "./icon-card";
+```
+
+icon-card.stories.tsx
+
+```ts
+import type { Meta, StoryObj } from "@storybook/react";
+import { IconCard } from "@/components/icon-card/icon-card";
+import { Sun, MapPin } from "lucide-react";
+
+const meta: Meta<typeof IconCard> = {
+  title: "Components/IconCard",
+  component: IconCard,
+  args: {
+    title: "Miqat Location",
+    description: "Nearest miqat and guidance",
+    icon: MapPin,
+    variant: "brand",
+  },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["brand", "amber", "sky", "emerald", "violet"],
+    },
+    icon: { control: false },
+  },
+  tags: ["autodocs"],
+};
+export default meta;
+
+type Story = StoryObj<typeof IconCard>;
+export const Default: Story = {};
+export const WithSunIcon: Story = { args: { icon: Sun } };
+```
+
+## Rules
+
+- Folder name matches component base name: `foo-bar/foo-bar.tsx` exports `FooBar` (named) only.
+- `index.tsx` re-exports named items from the component file; never default export from the folder root.
+- Story files use aliased imports (`@/*`), `tags: ["autodocs"]`, and set sensible `args` for quick previews.
+- Keep props types exported next to the component (e.g., `export type FooBarProps = { ... }`).
+- Add `argTypes` only when controls are meaningful; avoid unnecessary controls.
+- Prefer mobile-first examples and `layout: "fullscreen"` when the component is a bar/layout element.
