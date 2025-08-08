@@ -6,8 +6,9 @@ export class AppDatabase extends Dexie {
 
   constructor() {
     super("goUmrahPwaDb");
+    // Single version schema for early dev; delete DB manually when changing fields
     this.version(1).stores({
-      checklist: "++id, text, checked, category, createdAt",
+      checklist: "++id, text, checked, createdAt",
     });
   }
 }

@@ -1,26 +1,14 @@
 import { db } from "@/db/dexie";
 import type { ChecklistItem } from "@/types/db/models";
 
-export type ChecklistCategory = "makkah" | "medina" | "personal";
-
-export const getChecklist = async (
-  category: ChecklistCategory
-): Promise<ChecklistItem[]> => {
-  return await db.checklist
-    .where("category")
-    .equals(category)
-    .reverse()
-    .sortBy("createdAt");
+export const getChecklist = async (): Promise<ChecklistItem[]> => {
+  return await db.checklist.orderBy("createdAt").reverse().toArray();
 };
 
-export const addChecklistItem = async (
-  text: string,
-  category: ChecklistCategory
-): Promise<number> => {
+export const addChecklistItem = async (text: string): Promise<number> => {
   const item: Omit<ChecklistItem, "id"> = {
     text,
     checked: false,
-    category,
     createdAt: new Date(),
   };
   return await db.checklist.add(item as ChecklistItem);
