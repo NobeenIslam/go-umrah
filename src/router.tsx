@@ -4,7 +4,7 @@ import { Home } from "@/pages/Home";
 import { Checklist } from "@/pages/Checklist";
 import { Makkah } from "@/pages/Makkah/Makkah";
 import { Medina } from "@/pages/Medina/Medina";
-import { Learn } from "@/pages/Learn";
+import { Learn } from "@/pages/Learn/Learn";
 import { SecondaryLayout } from "@/layouts/SecondaryLayout";
 import { MasjidAnNabawi } from "@/pages/Medina/SubPages/MasjidAnNabawi";
 import { GivingSalawaat } from "@/pages/Medina/SubPages/GivingSalawaat";
