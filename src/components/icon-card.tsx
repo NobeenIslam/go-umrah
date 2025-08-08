@@ -4,12 +4,17 @@ import type { LucideIcon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Accent = "amber" | "sky" | "emerald" | "violet";
+export type IconCardVariant = "brand" | "amber" | "sky" | "emerald" | "violet";
 
-const accents: Record<
-  Accent,
+const variants: Record<
+  IconCardVariant,
   { iconBg: string; iconFg: string; ring: string }
 > = {
+  brand: {
+    iconBg: "bg-[color:var(--brand-soft-mint-a)]",
+    iconFg: "text-[color:var(--brand-primary)]",
+    ring: "ring-[color:var(--brand-primary)]/12",
+  },
   amber: {
     iconBg: "bg-amber-100",
     iconFg: "text-amber-600",
@@ -32,57 +37,65 @@ const accents: Record<
   },
 };
 
-export type DhikrCardProps = {
+export type IconCardProps = {
   title?: string;
   description?: string;
   icon?: LucideIcon;
-  accent?: Accent;
+  variant?: IconCardVariant;
+  ariaLabel?: string;
   className?: string;
 };
 
 /**
- * DhikrCard
+ * IconCard
  * - Mobile-first elevated card with left icon, title and paragraph.
- * - Uses Tailwind + shadcn styles, with color accents.
+ * - Theme-aligned (bg-card, ring-border) with brand variant by default.
  * - Accessible with semantic headings and text.
  */
-export function DhikrCard({
-  title = "Morning Dhikr",
-  description = "Begin each day with morning supplications (Adhkar) after Fajr prayer. Recite Ayat al-Kursi, the last two verses of Surah Al-Baqarah, and seek Allah's protection for the day ahead.",
+export function IconCard({
+  title,
+  description,
   icon: Icon = Sun,
-  accent = "amber",
+  variant = "brand",
+  ariaLabel,
   className,
-}: DhikrCardProps) {
-  const a = accents[accent];
+}: IconCardProps) {
+  const resolved = variants[variant];
 
   return (
     <article
       className={cn(
-        "rounded-3xl bg-white p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
-        a.ring,
+        // Theme surface + subtle elevation
+        "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-border",
+        // Variant ring overlay
+        resolved.ring,
         "transition-shadow",
         className
       )}
-      aria-label={title}
+      aria-label={ariaLabel ?? title}
     >
       <div className="flex items-start gap-4">
         <div
           className={cn(
             "mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-            a.iconBg
+            resolved.iconBg
           )}
           aria-hidden="true"
         >
-          <Icon className={cn("h-5 w-5", a.iconFg)} />
+          <Icon className={cn("h-5 w-5", resolved.iconFg)} />
         </div>
 
         <div className="min-w-0">
-          <h3 className="text-xl font-semibold leading-tight text-foreground">
-            {title}
-          </h3>
-          <p className="mt-2 text-base leading-relaxed text-muted-foreground [text-wrap:balance]">
-            {description}
-          </p>
+          {title ? (
+            <h3 className="text-xl font-semibold leading-tight text-foreground">
+              {title}
+            </h3>
+          ) : null}
+          {description ? (
+            <p className="mt-2 text-base leading-relaxed text-muted-foreground [text-wrap:balance]">
+              {description}
+            </p>
+          ) : null}
         </div>
       </div>
     </article>
