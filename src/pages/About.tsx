@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-export const AboutPage: FC = () => {
+export const About: FC = () => {
   return (
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">About / Learn</h2>

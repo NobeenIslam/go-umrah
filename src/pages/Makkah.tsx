@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-export const MakkahPage: FC = () => {
+export const Makkah: FC = () => {
   return (
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">Makkah</h2>

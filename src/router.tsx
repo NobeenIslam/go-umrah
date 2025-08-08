@@ -1,42 +1,40 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "@/layouts/RootLayout";
-import { HomePage } from "@/pages/HomePage";
-import { ChecklistPage } from "@/pages/ChecklistPage";
-import { MakkahPage } from "@/pages/MakkahPage";
-import { MedinaPage } from "@/pages/MedinaPage";
-import { AboutPage } from "@/pages/AboutPage";
+import { Home } from "@/pages/Home";
+import { Checklist } from "@/pages/Checklist";
+import { Makkah } from "@/pages/Makkah";
+import { Medina } from "@/pages/Medina";
+import { About } from "@/pages/About";
 import { SecondaryLayout } from "@/layouts/SecondaryLayout";
-import { MasjidAnNabawiPage } from "@/pages/Medina/MasjidAnNabawiPage";
-import { GivingSalawaatPage } from "@/pages/Medina/GivingSalawaatPage";
-import { RawdahPage } from "@/pages/Medina/RawdahPage";
-import { AlBaqeePage } from "@/pages/Medina/AlBaqeePage";
-import { ZiyarahPage } from "@/pages/Medina/ZiyarahPage";
-import { RecommendedActsMedinaPage } from "@/pages/Medina/RecommendedActsMedinaPage";
-import { MedinaZiyarahPage } from "@/pages/Medina/MedinaZiyarahPage";
+import { MasjidAnNabawi } from "@/pages/Medina/MasjidAnNabawi";
+import { GivingSalawaat } from "@/pages/Medina/GivingSalawaat";
+import { Rawdah } from "@/pages/Medina/Rawdah";
+import { AlBaqee } from "@/pages/Medina/AlBaqee";
+import { RecommendedActsMedina } from "@/pages/Medina/RecommendedActsMedina";
+import { MedinaZiyarah } from "@/pages/Medina/MedinaZiyarah";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "checklist", element: <ChecklistPage /> },
-      { path: "makkah", element: <MakkahPage /> },
-      { path: "medina", element: <MedinaPage /> },
-      { path: "learn", element: <AboutPage /> },
+      { index: true, element: <Home /> },
+      { path: "checklist", element: <Checklist /> },
+      { path: "makkah", element: <Makkah /> },
+      { path: "medina", element: <Medina /> },
+      { path: "learn", element: <About /> },
     ],
   },
   {
     path: "/medina",
     element: <SecondaryLayout />,
     children: [
-      { path: "masjid-an-nabawi", element: <MasjidAnNabawiPage /> },
-      { path: "giving-salawaat", element: <GivingSalawaatPage /> },
-      { path: "rawdah", element: <RawdahPage /> },
-      { path: "al-baqee", element: <AlBaqeePage /> },
-      { path: "recommended-acts", element: <RecommendedActsMedinaPage /> },
-      { path: "medina-ziyarah", element: <MedinaZiyarahPage /> },
-      { path: "ziyarah", element: <ZiyarahPage /> },
+      { path: "masjid-an-nabawi", element: <MasjidAnNabawi /> },
+      { path: "giving-salawaat", element: <GivingSalawaat /> },
+      { path: "rawdah", element: <Rawdah /> },
+      { path: "al-baqee", element: <AlBaqee /> },
+      { path: "recommended-acts", element: <RecommendedActsMedina /> },
+      { path: "medina-ziyarah", element: <MedinaZiyarah /> },
     ],
   },
 ]);

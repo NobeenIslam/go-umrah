@@ -54,7 +54,7 @@ const tiles = [
   },
 ] as const;
 
-export const MedinaPage: FC = () => {
+export const Medina: FC = () => {
   return (
     <div className="space-y-6">
       <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2">

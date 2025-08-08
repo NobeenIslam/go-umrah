@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-export const RecommendedActsMedinaPage: FC = () => {
+export const RecommendedActsMedina: FC = () => {
   return (
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">Recommended Acts of Worship</h2>
