@@ -1,0 +1,26 @@
+---
+description: When doing front end tasks, creating UI
+alwaysApply: false
+---
+
+## Styling Consistency Rules
+
+- Prefer Tailwind utility classes via `className` over inline `style`.
+- Expose a `className` prop on every component and merge it using `cn` from `@/lib/utils`.
+- Use CSS variables defined in [`src/index.css`](mdc:src/index.css) for colors, spacing, and theme tokens; do not hardcode hex values or magic numbers in components.
+- For computed or environment-based styles (e.g., safe-area insets), define reusable utility classes under `@layer components` in [`src/index.css`](mdc:src/index.css) instead of inline styles.
+- Use variant-based styling (e.g., `variant="primary" | "secondary"`) with clear class mappings, rather than duplicating component implementations.
+- Do not mix `className` and `style` for the same visual concern. If a value must be dynamic, prefer conditional classes or CSS custom properties.
+- Keep responsiveness and dark mode via Tailwind modifiers (e.g., `md:`, `dark:`) instead of inline logic.
+- Keep spacing and sizing on Tailwind’s scale whenever possible; avoid arbitrary pixel values unless necessary.
+
+### Patterns to follow
+
+- Create component-level utility classes under `@layer components` to encapsulate non-trivial styling (e.g., gradients, safe-area padding). Example: `safe-top-padding`, `topbar-gradient-primary`, `topbar-gradient-secondary` in [`src/index.css`](mdc:src/index.css).
+- Implement variants by mapping the prop to classes in the component body, then apply with `cn`.
+
+### Example reference
+
+- Top bar variant and utility-class usage in [`src/components/top-bar/top-bar.tsx`](mdc:src/components/top-bar/top-bar.tsx)
+  - Uses `variant` prop to switch gradient classes
+  - Applies `safe-top-padding` and gradient classes via `className` only
