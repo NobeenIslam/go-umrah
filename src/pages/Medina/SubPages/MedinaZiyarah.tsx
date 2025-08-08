@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+
 export const MedinaZiyarah: FC = () => {
   return (
     <div className="space-y-2">
