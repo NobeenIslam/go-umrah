@@ -4,7 +4,7 @@ import { useState, useMemo, useCallback } from "react";
 import { MapPin, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export type ZiyarahCardProps = {
+export type LargerCheckListItemProps = {
   title?: string;
   description?: string;
   statusLabel?: string;
@@ -13,14 +13,14 @@ export type ZiyarahCardProps = {
   className?: string;
 };
 
-export function ZiyarahCard({
+export function LargerCheckListItem({
   title = "Cave of Hira",
   description = "Where Prophet received first revelation",
   statusLabel = "Not visited",
   checked,
   onCheckedChange,
   className,
-}: ZiyarahCardProps) {
+}: LargerCheckListItemProps) {
   const isControlled = typeof checked === "boolean";
   const [internalChecked, setInternalChecked] = useState(false);
   const current = isControlled ? (checked as boolean) : internalChecked;

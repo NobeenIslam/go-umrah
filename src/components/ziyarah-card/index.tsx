@@ -1,1 +1,0 @@
-export { ZiyarahCard } from "./ziyarah-card";

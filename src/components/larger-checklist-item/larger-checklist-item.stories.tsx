@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ZiyarahCard } from "@/components/ziyarah-card/ziyarah-card";
+import { LargerCheckListItem } from "@/components/larger-checklist-item/larger-checklist-item";
 import React from "react";
 
-const meta: Meta<typeof ZiyarahCard> = {
-  title: "Components/ZiyarahCard",
-  component: ZiyarahCard,
+const meta: Meta<typeof LargerCheckListItem> = {
+  title: "Components/LargerCheckListItem",
+  component: LargerCheckListItem,
   args: {
     title: "Jabal Al-Noor",
     description: "Site of the Cave of Hira",
@@ -15,7 +15,7 @@ const meta: Meta<typeof ZiyarahCard> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof ZiyarahCard>;
+type Story = StoryObj<typeof LargerCheckListItem>;
 
 export const Default: Story = {
   render: (args) => {
@@ -24,7 +24,7 @@ export const Default: Story = {
     );
     return (
       <div className="max-w-md">
-        <ZiyarahCard {...args} checked={checked} onCheckedChange={setChecked} />
+        <LargerCheckListItem {...args} checked={checked} onCheckedChange={setChecked} />
       </div>
     );
   },

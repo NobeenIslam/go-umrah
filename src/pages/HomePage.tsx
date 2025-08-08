@@ -1,6 +1,4 @@
 import type { FC } from "react";
-import { ZiyarahCard } from "@/components/ziyarah-card";
-import { QuoteCard } from "@/components/quote-card";
 
 export const HomePage: FC = () => {
   return (
@@ -9,8 +7,6 @@ export const HomePage: FC = () => {
       <p className="text-sm text-muted-foreground">
         Placeholder screen. Navigation only.
       </p>
-      <ZiyarahCard />
-      <QuoteCard />
     </div>
   );
 };
