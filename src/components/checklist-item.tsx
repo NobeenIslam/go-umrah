@@ -22,10 +22,24 @@ export function ChecklistItem({
   className,
   variant = "default",
 }: ChecklistItemProps) {
+  const toggle = () => onCheckedChange(!checked);
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggle();
+    }
+  };
+
   return (
     <div
+      role="checkbox"
+      aria-checked={checked}
+      tabIndex={0}
+      onClick={toggle}
+      onKeyDown={handleKeyDown}
       className={cn(
-        "flex w-full items-center justify-between rounded-xl p-4 transition-all duration-300 hover:shadow-md",
+        "flex w-full cursor-pointer items-center justify-between rounded-xl p-4 transition-all duration-300 hover:shadow-md",
         variant === "gradient"
           ? "bg-gradient-teal border border-white/20 shadow-sm"
           : "bg-card border border-border",
@@ -38,11 +52,11 @@ export function ChecklistItem({
           checked={checked}
           onCheckedChange={onCheckedChange}
           className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+          onClick={(e) => e.stopPropagation()}
         />
-        <label
-          htmlFor={id}
+        <span
           className={cn(
-            "flex-1 cursor-pointer truncate text-sm font-medium leading-relaxed transition-all duration-300",
+            "flex-1 truncate text-sm font-medium leading-relaxed transition-all duration-300",
             checked
               ? "line-through text-muted-foreground opacity-70"
               : "text-foreground hover:text-primary"
@@ -50,14 +64,17 @@ export function ChecklistItem({
           title={text}
         >
           {text}
-        </label>
+        </span>
       </div>
 
       {onDelete ? (
         <Button
           variant="ghost"
           size="icon"
-          onClick={onDelete}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
           aria-label="Delete item"
           className="text-destructive hover:text-destructive/90"
         >
