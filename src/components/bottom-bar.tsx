@@ -59,8 +59,8 @@ export default function BottomBar({
                   className={cn(
                     "mx-auto flex w-full flex-col items-center justify-center gap-1 rounded-2xl px-2 py-2 text-xs font-medium transition",
                     isActive
-                      ? "text-[#43AA8B]"
-                      : "text-[#577590]/80 hover:text-[#577590]"
+                      ? "text-[color:var(--brand-primary)]"
+                      : "text-[color:var(--brand-secondary)]/80 hover:text-[color:var(--brand-secondary)]"
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -68,7 +68,7 @@ export default function BottomBar({
                     className={cn(
                       "relative grid h-10 w-10 place-items-center rounded-2xl transition",
                       isActive
-                        ? "bg-[#EAF4F1] ring-1 ring-[#D6ECE5]"
+                        ? "bg-[color:var(--brand-soft-mint-a)] ring-1 ring-[color:var(--brand-soft-mint-ring)]"
                         : "bg-transparent"
                     )}
                     aria-hidden="true"
@@ -76,7 +76,9 @@ export default function BottomBar({
                     <Icon
                       className={cn(
                         "h-6 w-6 transition",
-                        isActive ? "text-[#43AA8B]" : "text-[#577590]"
+                        isActive
+                          ? "text-[color:var(--brand-primary)]"
+                          : "text-[color:var(--brand-secondary)]"
                       )}
                     />
                   </span>

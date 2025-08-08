@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { palette } from "@/lib/palette";
 
 type GradientCardProps = {
   title?: string;
@@ -15,7 +14,7 @@ export default function GradientCard({
   title = "Card Title",
   subtitle,
   icon,
-  colors = [palette.softMintA, palette.softBlueA],
+  colors = ["var(--brand-soft-mint-a)", "var(--brand-soft-blue-a)"],
   className,
   badge,
 }: GradientCardProps) {
@@ -55,7 +54,9 @@ export default function GradientCard({
 
         <div className="flex items-end justify-between gap-2">
           <div>
-            <h3 className="text-lg font-semibold text-[#212529]">{title}</h3>
+            <h3 className="text-lg font-semibold text-[color:var(--brand-foreground)]">
+              {title}
+            </h3>
             {subtitle ? (
               <p className="text-sm text-slate-600">{subtitle}</p>
             ) : null}

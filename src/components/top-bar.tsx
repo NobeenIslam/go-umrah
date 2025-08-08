@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { palette } from "@/lib/palette";
 import * as React from "react";
 
 type TopBarProps = {
@@ -35,7 +34,8 @@ export default function TopBar({
         )}
         style={{
           paddingTop: "max(1rem, calc(env(safe-area-inset-top) + 0.5rem))",
-          background: `linear-gradient(180deg, ${palette.primary} 0%, ${palette.primaryDark} 100%)`,
+          background:
+            "linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)",
         }}
       >
         <div className="flex items-center justify-between">
