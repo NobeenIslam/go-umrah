@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+description: When doing front end tasks, creating UI
+alwaysApply: false
 ---
 
 # Reusable Component API Guidelines
