@@ -12,6 +12,12 @@ alwaysApply: true
   - Variables use noun or noun-phrase names (e.g., `completedItemCount`, `activeRoutePath`).
   - React components are PascalCase nouns (e.g., `QuoteCard`, `ChecklistItem`).
   - Don't need to add "Page" components it'll be known by the folder structure
+  - prever kebab case for component naming
+
+- Conditionals
+
+  - For UI prefer declarative if/else logic over nested ternaries
+  - Always break UI into components where possible rather than long piles of cascading HTML
 
 - Readability
 
