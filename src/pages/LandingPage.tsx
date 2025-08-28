@@ -6,6 +6,7 @@ import { InstallButton } from "@/components/landing/install-button"
 import { SuccessMessage } from "@/components/landing/success-message"
 import { IOSInstructions } from "@/components/landing/ios-instructions"
 import { FeatureCard } from "@/components/landing/feature-card"
+import AppLogo from "@/assets/app-logo.png"
 
 export const GoUmrahLanding = () => {
   const { isInstallable, promptInstall } = usePwaInstallPrompt()
@@ -39,7 +40,7 @@ export const GoUmrahLanding = () => {
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center space-y-8">
           <div className="space-y-4">
-            <img src="/pwa-512x512.png" alt="GoUmrah" width={100} height={100} className="mx-auto rounded-full" />
+            <img src={AppLogo} alt="GoUmrah" width={100} height={100} className="mx-auto rounded-full" />
             <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-foreground)] text-balance">GoUmrah</h1>
             <p className="text-xl md:text-2xl text-[var(--brand-secondary)] font-medium text-balance">
               Experience Umrah Like Never Before
