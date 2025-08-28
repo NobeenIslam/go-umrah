@@ -36,7 +36,7 @@ export const GoUmrahLanding = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[var(--brand-background)] via-[var(--brand-soft-mint-a)] to-[var(--brand-soft-blue-a)]">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-50">
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center space-y-8">
           <div className="space-y-4">
