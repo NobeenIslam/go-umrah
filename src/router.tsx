@@ -6,6 +6,7 @@ import { Makkah } from "@/pages/Makkah/Makkah";
 import { Medina } from "@/pages/Medina/Medina";
 import { Learn } from "@/pages/Learn/Learn";
 import { SecondaryLayout } from "@/layouts/SecondaryLayout";
+import { InstallGate } from "@/layouts/InstallGate";
 import { MasjidAnNabawi } from "@/pages/Medina/SubPages/MasjidAnNabawi";
 import { GivingSalawaat } from "@/pages/Medina/SubPages/GivingSalawaat";
 import { Rawdah } from "@/pages/Medina/SubPages/Rawdah";
@@ -25,13 +26,19 @@ import { UsefulInSaudiArabia } from "@/pages/Learn/SubPages/UsefulInSaudiArabia"
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <InstallGate />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "checklist", element: <Checklist /> },
-      { path: "makkah", element: <Makkah /> },
-      { path: "medina", element: <Medina /> },
-      { path: "learn", element: <Learn /> },
+      {
+        path: "/",
+        element: <RootLayout />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "checklist", element: <Checklist /> },
+          { path: "makkah", element: <Makkah /> },
+          { path: "medina", element: <Medina /> },
+          { path: "learn", element: <Learn /> },
+        ],
+      },
     ],
   },
   {
