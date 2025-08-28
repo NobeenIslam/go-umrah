@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { usePwaInstallPrompt } from "@/hooks/usePwaInstallPrompt"
-import { InstallButton } from "@/components/landing/InstallButton"
-import { SuccessMessage } from "@/components/landing/SuccessMessage"
-import { IOSInstructions } from "@/components/landing/IOSInstructions"
-import { FeatureCard } from "@/components/landing/FeatureCard"
+import { InstallButton } from "@/components/landing/install-button"
+import { SuccessMessage } from "@/components/landing/success-message"
+import { IOSInstructions } from "@/components/landing/ios-instructions"
+import { FeatureCard } from "@/components/landing/feature-card"
 
 export const GoUmrahLanding = () => {
   const { isInstallable, promptInstall } = usePwaInstallPrompt()
@@ -39,11 +39,7 @@ export const GoUmrahLanding = () => {
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center space-y-8">
           <div className="space-y-4">
-            <div className="w-24 h-24 mx-auto bg-[var(--brand-primary)]/10 rounded-3xl flex items-center justify-center">
-              <div className="w-12 h-12 bg-[var(--brand-primary)] rounded-2xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">G</span>
-              </div>
-            </div>
+            <img src="/pwa-512x512.png" alt="GoUmrah" width={100} height={100} className="mx-auto rounded-full" />
             <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-foreground)] text-balance">GoUmrah</h1>
             <p className="text-xl md:text-2xl text-[var(--brand-secondary)] font-medium text-balance">
               Experience Umrah Like Never Before
@@ -68,12 +64,12 @@ export const GoUmrahLanding = () => {
               description="Step-by-step rituals and prayers for your spiritual journey"
             />
             <FeatureCard
-              icon="📍"
-              title="Live Updates"
-              description="Real-time crowd information and prayer times"
+              icon="🤲"
+              title="Dua Builder"
+              description="Build your own dua with our AI-powered dua builder"
             />
             <FeatureCard
-              icon="🤲"
+              icon="📍"
               title="Personal Tracker"
               description="Track your progress and spiritual milestones"
             />
