@@ -20,7 +20,7 @@ import { Fiqh } from "@/pages/Learn/SubPages/Fiqh";
 import { Faqs } from "@/pages/Learn/SubPages/Faqs";
 import { UsefulInSaudiArabia } from "@/pages/Learn/SubPages/UsefulInSaudiArabia";
 import { Settings } from "@/pages/Settings";
-import { Ziyaarah } from "@/pages/Ziyaarah";
+import { Ziyaarah } from "@/pages/Ziyaarah/Ziyaarah";
 
 export const router = createBrowserRouter([
   {
