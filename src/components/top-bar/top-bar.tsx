@@ -1,11 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Menu, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-type TopBarProps = {
+interface TopBarProps {
   title?: string;
   onLeftClick?: () => void;
   onRightClick?: () => void;
@@ -17,9 +17,7 @@ type TopBarProps = {
 
 export function TopBar({
   title = "Title",
-  onLeftClick = () => {},
-  onRightClick = () => {},
-  leftIcon: LeftIcon = Menu,
+  onRightClick = () => { },
   rightIcon: RightIcon = Settings,
   className,
   variant = "primary",
@@ -43,20 +41,11 @@ export function TopBar({
         )}
       >
         <div className="flex items-center justify-between">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="h-10 w-10 rounded-full text-white/95 hover:bg-white/15 hover:text-white"
-            onClick={onLeftClick}
-            aria-label="Open menu"
-          >
-            <LeftIcon className="h-6 w-6" />
-          </Button>
-
+          {/* For spacing */}
+          <div className="w-10" />
           <h1 className="select-none text-xl font-bold tracking-wide">
             {title}
           </h1>
-
           <Button
             size="icon"
             variant="ghost"
