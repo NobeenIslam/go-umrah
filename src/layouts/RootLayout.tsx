@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { TopBar } from "@/components/top-bar";
 import { BottomBar } from "@/components/bottom-bar";
-import { BookOpenText, CheckSquare, Home, Building2, Box } from "lucide-react";
+import { BookOpenText, CheckSquare, Home, Building2, Box, Settings } from "lucide-react";
 
 const TABS = [
   { path: "/", label: "Home", icon: Home },
@@ -10,6 +10,7 @@ const TABS = [
   { path: "/makkah", label: "Makkah", icon: Box },
   { path: "/learn", label: "Learn", icon: BookOpenText },
 ] as const;
+
 
 export const RootLayout = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ export const RootLayout = () => {
 
   return (
     <div className="mx-auto min-h-dvh w-full max-w-md bg-background">
-      <TopBar title={activeTab.label} />
+      <TopBar title={activeTab.label} onRightIconClick={() => navigate("/settings")} rightIcon={Settings} />
 
       <main className="mx-auto max-w-md px-4 pt-24 pb-28">
         <Outlet />

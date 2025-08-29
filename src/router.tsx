@@ -22,6 +22,7 @@ import { Sunnah } from "@/pages/Learn/SubPages/Sunnah";
 import { Fiqh } from "@/pages/Learn/SubPages/Fiqh";
 import { Faqs } from "@/pages/Learn/SubPages/Faqs";
 import { UsefulInSaudiArabia } from "@/pages/Learn/SubPages/UsefulInSaudiArabia";
+import { Settings } from "@/pages/Settings";
 
 export const router = createBrowserRouter([
   {
@@ -39,39 +40,47 @@ export const router = createBrowserRouter([
           { path: "learn", element: <Learn /> },
         ],
       },
-    ],
-  },
-  {
-    path: "/medina",
-    element: <SecondaryLayout />,
-    children: [
-      { path: "masjid-an-nabawi", element: <MasjidAnNabawi /> },
-      { path: "giving-salawaat", element: <GivingSalawaat /> },
-      { path: "rawdah", element: <Rawdah /> },
-      { path: "al-baqee", element: <AlBaqee /> },
-      { path: "recommended-acts", element: <RecommendedActsMedina /> },
-      { path: "medina-ziyarah", element: <MedinaZiyarah /> },
-    ],
-  },
-  {
-    path: "/makkah",
-    element: <SecondaryLayout />,
-    children: [
-      { path: "ihram", element: <Ihram /> },
-      { path: "travel-meeqat", element: <TravelMeeqat /> },
-      { path: "umrah", element: <Umrah /> },
-      { path: "makkah-ziyarah", element: <MakkahZiyarah /> },
-    ],
-  },
-  {
-    path: "/learn",
-    element: <SecondaryLayout />,
-    children: [
-      { path: "quran", element: <Quran /> },
-      { path: "sunnah", element: <Sunnah /> },
-      { path: "fiqh", element: <Fiqh /> },
-      { path: "faqs", element: <Faqs /> },
-      { path: "useful-in-saudi-arabia", element: <UsefulInSaudiArabia /> },
+      {
+        path: "/settings",
+        element: <SecondaryLayout />,
+        children: [
+          { index: true, element: <Settings /> },
+        ],
+      },
+      {
+        path: "/medina",
+        element: <SecondaryLayout />,
+        children: [
+          { path: "masjid-an-nabawi", element: <MasjidAnNabawi /> },
+          { path: "giving-salawaat", element: <GivingSalawaat /> },
+          { path: "rawdah", element: <Rawdah /> },
+          { path: "al-baqee", element: <AlBaqee /> },
+          { path: "recommended-acts", element: <RecommendedActsMedina /> },
+          { path: "medina-ziyarah", element: <MedinaZiyarah /> },
+
+        ],
+      },
+      {
+        path: "/makkah",
+        element: <SecondaryLayout />,
+        children: [
+          { path: "ihram", element: <Ihram /> },
+          { path: "travel-meeqat", element: <TravelMeeqat /> },
+          { path: "umrah", element: <Umrah /> },
+          { path: "makkah-ziyarah", element: <MakkahZiyarah /> },
+        ],
+      },
+      {
+        path: "/learn",
+        element: <SecondaryLayout />,
+        children: [
+          { path: "quran", element: <Quran /> },
+          { path: "sunnah", element: <Sunnah /> },
+          { path: "fiqh", element: <Fiqh /> },
+          { path: "faqs", element: <Faqs /> },
+          { path: "useful-in-saudi-arabia", element: <UsefulInSaudiArabia /> },
+        ],
+      },
     ],
   },
 ]);
