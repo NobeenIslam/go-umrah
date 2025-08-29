@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { usePwaInstallPrompt } from "@/hooks/usePwaInstallPrompt"
-import { InstallButton } from "@/components/landing/install-button"
-import { SuccessMessage } from "@/components/landing/success-message"
-import { IOSInstructions } from "@/components/landing/ios-instructions"
-import { FeatureCard } from "@/components/landing/feature-card"
+import { InstallButton } from "@/pages/LandingPage/install-button"
+import { SuccessMessage } from "@/pages/LandingPage/success-message"
+import { IOSInstructions } from "@/pages/LandingPage/ios-instructions"
+import { FeatureCard } from "@/pages/LandingPage/feature-card"
 import AppLogo from "@/assets/app-logo.png"
 
 export const GoUmrahLanding = () => {

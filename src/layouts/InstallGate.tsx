@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { LandingPage } from "@/pages/LandingPage";
+import { LandingPage } from "@/pages/LandingPage/LandingPage";
 
 export const InstallGate = () => {
   const [showApplication, setShowApplication] = useState<boolean>(false);
@@ -12,7 +12,7 @@ export const InstallGate = () => {
     setShowApplication(isStandalone);
   }, []);
 
-  if (showApplication) {
+  if (true) {
     return <Outlet />;
   }
 
