@@ -11,9 +11,9 @@ export const InstallButton = ({ onInstallClick }: InstallButtonProps) => {
       <Button
         onClick={onInstallClick}
         size="lg"
-        className="text-lg px-8 py-6 h-auto bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] shadow-lg hover:shadow-xl transition-all duration-200"
+        className="h-auto bg-[var(--brand-primary)] px-8 py-6 text-lg shadow-lg transition-all duration-200 hover:bg-[var(--brand-primary-dark)] hover:shadow-xl"
       >
-        <Download className="w-5 h-5 mr-2" />
+        <Download className="mr-2 h-5 w-5" />
         Install GoUmrah App
       </Button>
       <p className="text-sm text-[var(--brand-secondary)]">

@@ -52,7 +52,7 @@ export function LargerCheckListItem({
       onKeyDown={onKeyDown}
       className={cn(
         // Surface and elevation tuned to theme tokens
-        "group relative w-full cursor-pointer rounded-3xl border bg-card/90 text-card-foreground shadow-lg ring-1 ring-border transition-all hover:shadow-2xl focus:outline-none focus-visible:ring-2",
+        "bg-card/90 text-card-foreground ring-border group relative w-full cursor-pointer rounded-3xl border shadow-lg ring-1 transition-all hover:shadow-2xl focus:outline-none focus-visible:ring-2",
         // Use brand primary for focus ring
         "focus-visible:ring-[color:var(--brand-primary)]/45",
         // Spacing
@@ -67,11 +67,11 @@ export function LargerCheckListItem({
       {/* Title and toggle */}
       <div className="flex items-start gap-4">
         <div className="min-w-0">
-          <h3 className="text-lg md:text-xl font-semibold tracking-tight">
+          <h3 className="text-lg font-semibold tracking-tight md:text-xl">
             {title}
           </h3>
           {description ? (
-            <p className="mt-3 text-sm md:text-base text-muted-foreground">
+            <p className="text-muted-foreground mt-3 text-sm md:text-base">
               {description}
             </p>
           ) : null}
@@ -90,8 +90,8 @@ export function LargerCheckListItem({
             "ml-auto flex h-10 w-10 items-center justify-center rounded-full transition-all",
             // Ring and backgrounds aligned to brand
             current
-              ? "bg-[color:var(--brand-primary)] text-white ring-1 ring-[color:var(--brand-primary)]/70"
-              : "bg-transparent text-[color:var(--brand-secondary)] ring-1 ring-[color:var(--brand-secondary)]/45 hover:bg-[color:var(--brand-soft-mint-a)]",
+              ? "ring-[color:var(--brand-primary)]/70 bg-[color:var(--brand-primary)] text-white ring-1"
+              : "ring-[color:var(--brand-secondary)]/45 bg-transparent text-[color:var(--brand-secondary)] ring-1 hover:bg-[color:var(--brand-soft-mint-a)]",
           )}
         >
           <Check
@@ -107,7 +107,7 @@ export function LargerCheckListItem({
       </div>
 
       {/* Bottom status row */}
-      <div className="mt-6 flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
+      <div className="text-muted-foreground mt-6 flex items-center gap-2 text-xs md:text-sm">
         <MapPin
           className={cn(
             "h-5 w-5",

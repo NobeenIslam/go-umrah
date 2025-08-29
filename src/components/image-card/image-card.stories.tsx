@@ -48,7 +48,7 @@ export const Portrait: Story = {
 export const ChildrenOnly: Story = {
   render: () => (
     <ImageCard ratio={16 / 9}>
-      <div className="grid h-full w-full place-items-center bg-muted text-sm text-muted-foreground">
+      <div className="bg-muted text-muted-foreground grid h-full w-full place-items-center text-sm">
         Custom content
       </div>
     </ImageCard>

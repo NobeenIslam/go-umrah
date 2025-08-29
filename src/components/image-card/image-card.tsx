@@ -44,14 +44,14 @@ export function ImageCard({
           ) : children ? (
             <div
               className={cn(
-                "grid h-full w-full place-items-center bg-muted",
+                "bg-muted grid h-full w-full place-items-center",
                 imageClassName,
               )}
             >
               {children}
             </div>
           ) : (
-            <div className="h-full w-full bg-muted" aria-hidden="true" />
+            <div className="bg-muted h-full w-full" aria-hidden="true" />
           )}
         </AspectRatio>
       </div>
@@ -60,12 +60,12 @@ export function ImageCard({
         <div className={cn("flex items-start gap-3 px-6 py-4")}>
           <div className="min-w-0">
             {title ? (
-              <h3 className="text-base font-semibold leading-tight text-foreground">
+              <h3 className="text-foreground text-base font-semibold leading-tight">
                 {title}
               </h3>
             ) : null}
             {description ? (
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                 {description}
               </p>
             ) : null}

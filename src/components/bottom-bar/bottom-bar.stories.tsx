@@ -30,10 +30,10 @@ export const Default: Story = {
     return (
       <div style={{ paddingBottom: 80 }}>
         <div className="mx-auto max-w-md p-4">
-          <p className="mb-3 text-sm text-muted-foreground">
+          <p className="text-muted-foreground mb-3 text-sm">
             Active tab: <span className="font-medium">{active}</span>
           </p>
-          <div className="h-64 rounded-3xl border bg-muted/30" />
+          <div className="bg-muted/30 h-64 rounded-3xl border" />
         </div>
         <BottomBar {...args} activeKey={active} onChange={setActive} />
       </div>

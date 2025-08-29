@@ -36,8 +36,8 @@ export const GoUmrahLanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-50">
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
-        <div className="text-center space-y-8">
+      <div className="container mx-auto max-w-4xl px-4 py-16">
+        <div className="space-y-8 text-center">
           <div className="space-y-4">
             <img
               src={AppLogo}
@@ -46,16 +46,16 @@ export const GoUmrahLanding = () => {
               height={100}
               className="mx-auto rounded-full"
             />
-            <h1 className="text-5xl md:text-6xl font-bold text-[var(--brand-foreground)] text-balance">
+            <h1 className="text-balance text-5xl font-bold text-[var(--brand-foreground)] md:text-6xl">
               GoUmrah
             </h1>
-            <p className="text-xl md:text-2xl text-[var(--brand-secondary)] font-medium text-balance">
+            <p className="text-balance text-xl font-medium text-[var(--brand-secondary)] md:text-2xl">
               Experience Umrah Like Never Before
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto space-y-4">
-            <p className="text-lg text-[var(--brand-foreground)]/80 text-pretty">
+          <div className="mx-auto max-w-2xl space-y-4">
+            <p className="text-[var(--brand-foreground)]/80 text-pretty text-lg">
               Your complete spiritual companion for the sacred journey. Get
               personalized guidance, real-time updates, and essential tools all
               in one beautiful app.
@@ -64,7 +64,7 @@ export const GoUmrahLanding = () => {
 
           <div className="space-y-6">{renderInstallSection()}</div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             <FeatureCard
               icon="🕋"
               title="Sacred Guidance"

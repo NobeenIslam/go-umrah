@@ -38,7 +38,7 @@ export const Checklist: FC = () => {
       </div>
 
       <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="text-muted-foreground flex items-center justify-between text-xs">
           <span>
             {completed} of {total} completed ({percent}%)
           </span>
@@ -62,7 +62,7 @@ export const Checklist: FC = () => {
       </div>
 
       {isLoading ? (
-        <div className="text-sm text-muted-foreground">Loading...</div>
+        <div className="text-muted-foreground text-sm">Loading...</div>
       ) : (
         <ul className="flex w-full flex-col gap-2">
           {items.map((item) => (
@@ -83,7 +83,7 @@ export const Checklist: FC = () => {
             </li>
           ))}
           {items.length === 0 ? (
-            <li className="text-sm text-muted-foreground">No items yet.</li>
+            <li className="text-muted-foreground text-sm">No items yet.</li>
           ) : null}
         </ul>
       )}

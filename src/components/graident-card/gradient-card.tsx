@@ -35,7 +35,7 @@ export function GradientCard({
       className={cn(
         "group relative h-full w-full overflow-hidden rounded-3xl p-5 sm:p-6",
         minHeightClassName,
-        "ring-1 ring-border shadow-sm",
+        "ring-border shadow-sm ring-1",
         className,
       )}
       style={{
@@ -56,10 +56,10 @@ export function GradientCard({
       <div className="relative flex h-full flex-col">
         {showIcon ? (
           <div className="flex items-center justify-center">
-            <div className="grid h-20 w-20 place-items-center rounded-full bg-card/85 shadow-sm ring-1 ring-border">
+            <div className="bg-card/85 ring-border grid h-20 w-20 place-items-center rounded-full shadow-sm ring-1">
               {icon ?? (
                 <div
-                  className="h-9 w-9 rounded-md bg-muted"
+                  className="bg-muted h-9 w-9 rounded-md"
                   aria-hidden="true"
                 />
               )}
@@ -74,11 +74,11 @@ export function GradientCard({
               badge && "mx-0 text-left",
             )}
           >
-            <h3 className="text-lg font-semibold text-[color:var(--brand-foreground)] leading-snug break-words">
+            <h3 className="break-words text-lg font-semibold leading-snug text-[color:var(--brand-foreground)]">
               {title}
             </h3>
             {subtitle ? (
-              <p className="text-sm text-muted-foreground leading-snug break-words">
+              <p className="text-muted-foreground break-words text-sm leading-snug">
                 {subtitle}
               </p>
             ) : null}
@@ -88,7 +88,7 @@ export function GradientCard({
       </div>
 
       {/* Hover focus ring */}
-      <div className="pointer-events-none absolute inset-0 rounded-3xl ring-0 ring-[color:var(--brand-primary)]/0 transition group-hover:ring-2 group-hover:ring-[color:var(--brand-primary)]/30 group-focus-within:ring-2 group-focus-within:ring-[color:var(--brand-primary)]/30" />
+      <div className="ring-[color:var(--brand-primary)]/0 group-hover:ring-[color:var(--brand-primary)]/30 group-focus-within:ring-[color:var(--brand-primary)]/30 pointer-events-none absolute inset-0 rounded-3xl ring-0 transition group-focus-within:ring-2 group-hover:ring-2" />
     </div>
   );
 }

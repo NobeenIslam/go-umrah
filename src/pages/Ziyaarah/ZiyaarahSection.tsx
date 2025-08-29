@@ -25,7 +25,7 @@ export const ZiyaarahSection: FC<ZiyaarahSectionProps> = ({ city, title }) => {
         <h2 className="text-xl font-semibold">{title}</h2>
         <div className="mt-2 flex items-center gap-3">
           <Progress value={progressPercent} className="h-2" />
-          <span className="text-xs text-muted-foreground">
+          <span className="text-muted-foreground text-xs">
             {progressPercent}%
           </span>
         </div>
