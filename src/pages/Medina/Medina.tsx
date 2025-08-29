@@ -32,26 +32,10 @@ export const Medina: FC = () => {
         >
           <GradientCard
             title="Recommended Acts of Worship"
-            subtitle="Ziyaarah (Medina)"
             className="aspect-[6/1]"
             showIcon={false}
             density="compact"
             colors={["#FFF6DE", "#FCE9B4"]}
-          />
-        </Link>
-
-        <Link
-          to="/medina/medina-ziyarah"
-          className="block"
-          aria-label="Medina Ziyaarah"
-        >
-          <GradientCard
-            title="Medina Ziyaarah"
-            subtitle="Sites and etiquettes"
-            className="aspect-[6/1]"
-            showIcon={false}
-            density="compact"
-            colors={["#E9EEF4", "#D8E2EE"]}
           />
         </Link>
       </div>

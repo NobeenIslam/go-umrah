@@ -1,13 +1,13 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { TopBar } from "@/components/top-bar";
 import { BottomBar } from "@/components/bottom-bar";
-import { BookOpenText, CheckSquare, Home, Building2, Box, Settings } from "lucide-react";
+import { BookOpenText, CheckSquare, Building2, Box, MapPin, Settings } from "lucide-react";
 
 const TABS = [
-  { path: "/", label: "Home", icon: Home },
   { path: "/checklist", label: "Checklist", icon: CheckSquare },
   { path: "/medina", label: "Medina", icon: Building2 },
   { path: "/makkah", label: "Makkah", icon: Box },
+  { path: "/ziyaarah", label: "Ziyaarah", icon: MapPin },
   { path: "/learn", label: "Learn", icon: BookOpenText },
 ] as const;
 

@@ -23,23 +23,6 @@ export const Makkah: FC = () => {
           </Link>
         ))}
       </div>
-
-      <div className="space-y-4">
-        <Link
-          to="/makkah/makkah-ziyarah"
-          className="block"
-          aria-label="Makkah Ziyarah"
-        >
-          <GradientCard
-            title="Makkah Ziyarah"
-            subtitle="Ziyaarah (Makkah)"
-            className="aspect-[6/1]"
-            showIcon={false}
-            density="compact"
-            colors={["#FFF6DE", "#FCE9B4"]}
-          />
-        </Link>
-      </div>
     </div>
   );
 };

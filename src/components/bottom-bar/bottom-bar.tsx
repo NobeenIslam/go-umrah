@@ -20,7 +20,7 @@ type BottomBarProps = {
 export function BottomBar({
   items = [],
   activeKey,
-  onChange = () => {},
+  onChange = () => { },
   className,
 }: BottomBarProps) {
   const [internalActive, setInternalActive] = React.useState<string>(
