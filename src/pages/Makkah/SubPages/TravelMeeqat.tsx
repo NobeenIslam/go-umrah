@@ -1,6 +1,5 @@
 import type { FC } from "react";
 
-
 export const TravelMeeqat: FC = () => {
   return (
     <div className="space-y-2">

@@ -25,7 +25,7 @@ export function GradientCard({
   const bottomRowClassName = cn(
     "flex items-end gap-2",
     badge ? "justify-between" : "justify-center",
-    showIcon ? "mt-5 sm:mt-6" : "mt-1"
+    showIcon ? "mt-5 sm:mt-6" : "mt-1",
   );
 
   const minHeightClassName = density === "compact" ? "min-h-32" : "min-h-48";
@@ -36,7 +36,7 @@ export function GradientCard({
         "group relative h-full w-full overflow-hidden rounded-3xl p-5 sm:p-6",
         minHeightClassName,
         "ring-1 ring-border shadow-sm",
-        className
+        className,
       )}
       style={{
         background: `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`,
@@ -71,7 +71,7 @@ export function GradientCard({
           <div
             className={cn(
               "mx-auto max-w-[90%] text-center",
-              badge && "mx-0 text-left"
+              badge && "mx-0 text-left",
             )}
           >
             <h3 className="text-lg font-semibold text-[color:var(--brand-foreground)] leading-snug break-words">

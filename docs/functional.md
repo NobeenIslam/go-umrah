@@ -21,14 +21,11 @@ Features grouped by product area and priority:
 **Core Experience**
 
 - Step 1: Explore Navigation
-
   - UI/UX: Clear tabs labeled Home Checklist, Makkah, Medina, About/Learn.
 
   - Placeholder screens just navigatable
 
-
 - Step 2: View Makkah Content
-
   - User selects Makkah; sees sub-page list: Meeqat, Ihraam, Umrah Guide.
 
   - UI: Each sub-page shows headings, key points, and placeholders for tips.
@@ -36,7 +33,6 @@ Features grouped by product area and priority:
   - Validation: If offline and not yet cached, display “Content will be available after first visit” notice.
 
 - Step 3: View Medina Content
-
   - User selects Medina; sees Masjid An-Nabawi, Giving Salawaat, Rawdah, Al-Baqee, Recommended Acts.
 
   - UI: Scannable content blocks; etiquette highlights emphasized.
@@ -44,7 +40,6 @@ Features grouped by product area and priority:
   - Next: Link to related pages (e.g., Rawdah etiquette from Masjid An-Nabawi).
 
 - Step 4: Use the Checklist
-
   - User opens Checklist tab; toggles between Makkah and Medina categories.
 
   - Add Item: Taps “Add item,” enters text, optional category; validation prevents empty or 200+ chars.
@@ -56,7 +51,6 @@ Features grouped by product area and priority:
   - Persistence: Changes saved instantly to local storage.
 
 - Step 6: Install to Home Screen
-
   - User taps “Install app” in header menu; follows OS-native prompt.
 
   - Post-install: App launches in standalone mode with splash screen.

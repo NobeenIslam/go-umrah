@@ -43,7 +43,7 @@ export function ChecklistItem({
         variant === "gradient"
           ? "bg-gradient-teal border border-white/20 shadow-sm"
           : "bg-card border border-border",
-        className
+        className,
       )}
     >
       <div className="flex min-w-0 items-center gap-3">
@@ -59,7 +59,7 @@ export function ChecklistItem({
             "flex-1 truncate text-sm font-medium leading-relaxed transition-all duration-300",
             checked
               ? "line-through text-muted-foreground opacity-70"
-              : "text-foreground hover:text-primary"
+              : "text-foreground hover:text-primary",
           )}
           title={text}
         >

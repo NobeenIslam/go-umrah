@@ -42,9 +42,7 @@ export const router = createBrowserRouter([
       {
         path: "/settings",
         element: <SecondaryLayout />,
-        children: [
-          { index: true, element: <Settings /> },
-        ],
+        children: [{ index: true, element: <Settings /> }],
       },
       {
         path: "/medina",
@@ -55,7 +53,6 @@ export const router = createBrowserRouter([
           { path: "rawdah", element: <Rawdah /> },
           { path: "al-baqee", element: <AlBaqee /> },
           { path: "recommended-acts", element: <RecommendedActsMedina /> },
-
         ],
       },
       {

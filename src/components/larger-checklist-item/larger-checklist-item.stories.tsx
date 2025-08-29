@@ -20,11 +20,15 @@ type Story = StoryObj<typeof LargerCheckListItem>;
 export const Default: Story = {
   render: (args) => {
     const [checked, setChecked] = React.useState<boolean>(
-      args.checked ?? false
+      args.checked ?? false,
     );
     return (
       <div className="max-w-md">
-        <LargerCheckListItem {...args} checked={checked} onCheckedChange={setChecked} />
+        <LargerCheckListItem
+          {...args}
+          checked={checked}
+          onCheckedChange={setChecked}
+        />
       </div>
     );
   },

@@ -70,7 +70,7 @@ export function IconCard({
         // Variant ring overlay
         resolved.ring,
         "transition-shadow",
-        className
+        className,
       )}
       aria-label={ariaLabel ?? title}
     >
@@ -78,7 +78,7 @@ export function IconCard({
         <div
           className={cn(
             "mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-            resolved.iconBg
+            resolved.iconBg,
           )}
           aria-hidden="true"
         >

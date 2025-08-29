@@ -20,11 +20,11 @@ type BottomBarProps = {
 export function BottomBar({
   items = [],
   activeKey,
-  onChange = () => { },
+  onChange = () => {},
   className,
 }: BottomBarProps) {
   const [internalActive, setInternalActive] = React.useState<string>(
-    items[0]?.key ?? "home"
+    items[0]?.key ?? "home",
   );
   const isControlled = activeKey !== undefined;
   const currentActive = isControlled ? activeKey! : internalActive;
@@ -40,7 +40,7 @@ export function BottomBar({
     <nav
       className={cn(
         "fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-md",
-        className
+        className,
       )}
       aria-label="Bottom navigation bar"
     >
@@ -60,7 +60,7 @@ export function BottomBar({
                     "mx-auto flex w-full flex-col items-center justify-center gap-1 rounded-2xl px-2 py-2 text-xs font-medium transition",
                     isActive
                       ? "text-[color:var(--brand-primary)]"
-                      : "text-[color:var(--brand-secondary)]/80 hover:text-[color:var(--brand-secondary)]"
+                      : "text-[color:var(--brand-secondary)]/80 hover:text-[color:var(--brand-secondary)]",
                   )}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -69,7 +69,7 @@ export function BottomBar({
                       "relative grid h-10 w-10 place-items-center rounded-2xl transition",
                       isActive
                         ? "bg-[color:var(--brand-soft-mint-a)] ring-1 ring-[color:var(--brand-soft-mint-ring)]"
-                        : "bg-transparent"
+                        : "bg-transparent",
                     )}
                     aria-hidden="true"
                   >
@@ -78,7 +78,7 @@ export function BottomBar({
                         "h-6 w-6 transition",
                         isActive
                           ? "text-[color:var(--brand-primary)]"
-                          : "text-[color:var(--brand-secondary)]"
+                          : "text-[color:var(--brand-secondary)]",
                       )}
                     />
                   </span>

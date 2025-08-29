@@ -1,6 +1,5 @@
 import type { FC } from "react";
 
-
 export const Umrah: FC = () => {
   return (
     <div className="space-y-2">

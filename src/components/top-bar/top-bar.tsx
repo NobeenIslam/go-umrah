@@ -12,18 +12,17 @@ interface TopBarProps {
   rightIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   className?: string;
   variant?: "primary" | "secondary";
-};
+}
 
 export function TopBar({
   title = "Title",
-  onLeftIconClick = () => { },
-  onRightIconClick = () => { },
+  onLeftIconClick = () => {},
+  onRightIconClick = () => {},
   leftIcon,
   rightIcon,
   className,
   variant = "primary",
 }: TopBarProps) {
-
   console.log(leftIcon, rightIcon);
 
   const variantClass =
@@ -41,7 +40,7 @@ export function TopBar({
           "mx-auto max-w-md rounded-b-3xl text-white shadow-md",
           "px-4 pb-3 pt-4",
           "safe-top-padding",
-          variantClass
+          variantClass,
         )}
       >
         <div className="flex items-center justify-between">

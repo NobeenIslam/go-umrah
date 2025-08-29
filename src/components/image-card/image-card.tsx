@@ -45,7 +45,7 @@ export function ImageCard({
             <div
               className={cn(
                 "grid h-full w-full place-items-center bg-muted",
-                imageClassName
+                imageClassName,
               )}
             >
               {children}

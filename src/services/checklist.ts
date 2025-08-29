@@ -20,7 +20,7 @@ export const removeChecklistItem = async (id: number): Promise<void> => {
 
 export const setChecklistItemChecked = async (
   id: number,
-  checked: boolean
+  checked: boolean,
 ): Promise<number> => {
   return await db.checklist.update(id, { checked });
 };

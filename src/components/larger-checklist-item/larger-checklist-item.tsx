@@ -57,7 +57,7 @@ export function LargerCheckListItem({
         "focus-visible:ring-[color:var(--brand-primary)]/45",
         // Spacing
         "p-6 md:p-8",
-        className
+        className,
       )}
       style={{
         // Subtle brand gradient edge glow
@@ -91,13 +91,13 @@ export function LargerCheckListItem({
             // Ring and backgrounds aligned to brand
             current
               ? "bg-[color:var(--brand-primary)] text-white ring-1 ring-[color:var(--brand-primary)]/70"
-              : "bg-transparent text-[color:var(--brand-secondary)] ring-1 ring-[color:var(--brand-secondary)]/45 hover:bg-[color:var(--brand-soft-mint-a)]"
+              : "bg-transparent text-[color:var(--brand-secondary)] ring-1 ring-[color:var(--brand-secondary)]/45 hover:bg-[color:var(--brand-soft-mint-a)]",
           )}
         >
           <Check
             className={cn(
               "h-5 w-5 transition-transform duration-200",
-              current ? "scale-100 opacity-100" : "scale-50 opacity-0"
+              current ? "scale-100 opacity-100" : "scale-50 opacity-0",
             )}
           />
           <span className="sr-only">
@@ -113,12 +113,12 @@ export function LargerCheckListItem({
             "h-5 w-5",
             current
               ? "text-[color:var(--brand-primary)]"
-              : "text-[color:var(--brand-secondary)]"
+              : "text-[color:var(--brand-secondary)]",
           )}
         />
         <span
           className={cn(
-            current ? "text-foreground font-medium" : "text-muted-foreground"
+            current ? "text-foreground font-medium" : "text-muted-foreground",
           )}
         >
           {statusText}

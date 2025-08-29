@@ -76,8 +76,6 @@ A detailed, first-time-to-advanced journey:
 
 - User can optionally install the PWA to their device for a full app-like experience (standard PWA install banner appears as per browser behavior).
 
-
-
 ## Narrative
 
 Aisha is preparing for her first Umrah. She worries about remembering the steps and wants to be respectful in both Makkah and Medina. A friend shares a link to Umrah Companion. She opens it on her phone and adds it to her home screen.

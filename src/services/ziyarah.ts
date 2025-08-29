@@ -8,7 +8,7 @@ export async function getZiyarah(kind: ZiyarahKind): Promise<ZiyarahItem[]> {
 export async function setZiyarahChecked(
   kind: ZiyarahKind,
   id: number,
-  checked: boolean
+  checked: boolean,
 ): Promise<number> {
   // Ensure we only update within the requested kind
   const item = await db.ziyarah.get(id);

@@ -92,7 +92,7 @@ export function QuoteCard({
         "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
         variantStyles.ring,
         "transition-all",
-        className
+        className,
       )}
       aria-label="Quote card"
     >
@@ -114,13 +114,13 @@ export function QuoteCard({
           <div
             className={cn(
               "relative mt-4 rounded-2xl p-4 sm:p-5",
-              variantStyles.boxBg
+              variantStyles.boxBg,
             )}
           >
             <div
               className={cn(
                 "absolute left-2 top-2 bottom-2 w-1.5 rounded-full",
-                variantStyles.bar
+                variantStyles.bar,
               )}
             />
             <blockquote className="pl-5">
@@ -136,7 +136,7 @@ export function QuoteCard({
               <div
                 className={cn(
                   "space-y-3 italic leading-relaxed",
-                  variantStyles.quoteText
+                  variantStyles.quoteText,
                 )}
               >
                 {quotes?.map((quoteText, quoteIndex) => (
