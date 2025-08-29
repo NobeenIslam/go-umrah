@@ -7,7 +7,7 @@ export const Sunnah: FC = () => {
     <div className="space-y-2">
       <h2 className="text-xl font-semibold">Sunnah</h2>
       <ImageCard src={sunnah} alt="Sunnah" ratio={16 / 9} />
-      <p className="text-sm text-muted-foreground">Content coming soon.</p>
+      <p className="text-muted-foreground text-sm">Content coming soon.</p>
     </div>
   );
 };

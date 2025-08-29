@@ -25,7 +25,7 @@ export const Default: Story = {
         onRightClick={() => alert("Settings clicked")}
       />
       <div className="mx-auto max-w-md p-4 pt-24">
-        <div className="h-64 rounded-3xl border bg-muted/30" />
+        <div className="bg-muted/30 h-64 rounded-3xl border" />
       </div>
     </div>
   ),

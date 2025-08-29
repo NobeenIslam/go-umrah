@@ -8,7 +8,7 @@ export const SecondaryLayout = () => {
   const activePath = location.pathname;
 
   return (
-    <div className="mx-auto min-h-dvh w-full max-w-md bg-background">
+    <div className="bg-background mx-auto min-h-dvh w-full max-w-md">
       <TopBar
         title={activePath === "/settings" ? "Settings" : ""}
         leftIcon={ArrowLeft}
@@ -16,7 +16,7 @@ export const SecondaryLayout = () => {
         variant="secondary"
       />
 
-      <main className="mx-auto max-w-md px-4 pt-24 pb-6">
+      <main className="mx-auto max-w-md px-4 pb-6 pt-24">
         <Outlet />
       </main>
     </div>

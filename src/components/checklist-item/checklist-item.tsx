@@ -42,8 +42,8 @@ export function ChecklistItem({
         "flex w-full cursor-pointer items-center justify-between rounded-xl p-4 transition-all duration-300 hover:shadow-md",
         variant === "gradient"
           ? "bg-gradient-teal border border-white/20 shadow-sm"
-          : "bg-card border border-border",
-        className
+          : "bg-card border-border border",
+        className,
       )}
     >
       <div className="flex min-w-0 items-center gap-3">
@@ -58,8 +58,8 @@ export function ChecklistItem({
           className={cn(
             "flex-1 truncate text-sm font-medium leading-relaxed transition-all duration-300",
             checked
-              ? "line-through text-muted-foreground opacity-70"
-              : "text-foreground hover:text-primary"
+              ? "text-muted-foreground line-through opacity-70"
+              : "text-foreground hover:text-primary",
           )}
           title={text}
         >

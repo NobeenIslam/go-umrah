@@ -89,10 +89,10 @@ export function QuoteCard({
   return (
     <section
       className={cn(
-        "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1",
+        "bg-card rounded-3xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 sm:p-6",
         variantStyles.ring,
         "transition-all",
-        className
+        className,
       )}
       aria-label="Quote card"
     >
@@ -106,7 +106,7 @@ export function QuoteCard({
         </div>
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-balance text-lg sm:text-xl font-semibold text-foreground">
+          <h2 className="text-foreground text-balance text-lg font-semibold sm:text-xl">
             {heading}
           </h2>
 
@@ -114,17 +114,17 @@ export function QuoteCard({
           <div
             className={cn(
               "relative mt-4 rounded-2xl p-4 sm:p-5",
-              variantStyles.boxBg
+              variantStyles.boxBg,
             )}
           >
             <div
               className={cn(
-                "absolute left-2 top-2 bottom-2 w-1.5 rounded-full",
-                variantStyles.bar
+                "absolute bottom-2 left-2 top-2 w-1.5 rounded-full",
+                variantStyles.bar,
               )}
             />
             <blockquote className="pl-5">
-              <div className="flex items-center gap-2 pb-2 text-muted-foreground">
+              <div className="text-muted-foreground flex items-center gap-2 pb-2">
                 {showIcon ? (
                   <Quote
                     className={cn("h-4 w-4", variantStyles.icon)}
@@ -136,7 +136,7 @@ export function QuoteCard({
               <div
                 className={cn(
                   "space-y-3 italic leading-relaxed",
-                  variantStyles.quoteText
+                  variantStyles.quoteText,
                 )}
               >
                 {quotes?.map((quoteText, quoteIndex) => (

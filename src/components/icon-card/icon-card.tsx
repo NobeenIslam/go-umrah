@@ -66,11 +66,11 @@ export function IconCard({
     <article
       className={cn(
         // Theme surface + subtle elevation
-        "rounded-3xl bg-card p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-border",
+        "bg-card ring-border rounded-3xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 sm:p-6",
         // Variant ring overlay
         resolved.ring,
         "transition-shadow",
-        className
+        className,
       )}
       aria-label={ariaLabel ?? title}
     >
@@ -78,7 +78,7 @@ export function IconCard({
         <div
           className={cn(
             "mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-            resolved.iconBg
+            resolved.iconBg,
           )}
           aria-hidden="true"
         >
@@ -87,12 +87,12 @@ export function IconCard({
 
         <div className="min-w-0">
           {title ? (
-            <h3 className="text-xl font-semibold leading-tight text-foreground">
+            <h3 className="text-foreground text-xl font-semibold leading-tight">
               {title}
             </h3>
           ) : null}
           {description ? (
-            <p className="mt-2 text-base leading-relaxed text-muted-foreground [text-wrap:balance]">
+            <p className="text-muted-foreground mt-2 text-base leading-relaxed [text-wrap:balance]">
               {description}
             </p>
           ) : null}

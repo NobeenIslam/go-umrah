@@ -1,7 +1,14 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { TopBar } from "@/components/top-bar";
 import { BottomBar } from "@/components/bottom-bar";
-import { BookOpenText, CheckSquare, Building2, Box, MapPin, Settings } from "lucide-react";
+import {
+  BookOpenText,
+  CheckSquare,
+  Building2,
+  Box,
+  MapPin,
+  Settings,
+} from "lucide-react";
 
 const TABS = [
   { path: "/checklist", label: "Checklist", icon: CheckSquare },
@@ -11,7 +18,6 @@ const TABS = [
   { path: "/learn", label: "Learn", icon: BookOpenText },
 ] as const;
 
-
 export const RootLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,10 +26,14 @@ export const RootLayout = () => {
   const activeTab = TABS.find((t) => t.path === activePath) ?? TABS[0];
 
   return (
-    <div className="mx-auto min-h-dvh w-full max-w-md bg-background">
-      <TopBar title={activeTab.label} onRightIconClick={() => navigate("/settings")} rightIcon={Settings} />
+    <div className="bg-background mx-auto min-h-dvh w-full max-w-md">
+      <TopBar
+        title={activeTab.label}
+        onRightIconClick={() => navigate("/settings")}
+        rightIcon={Settings}
+      />
 
-      <main className="mx-auto max-w-md px-4 pt-24 pb-28">
+      <main className="mx-auto max-w-md px-4 pb-28 pt-24">
         <Outlet />
       </main>
 
